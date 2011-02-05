@@ -23,7 +23,6 @@ public class IO {
             }
             bout.write(buffer, 0, len);
         }
-        byte[] data = bout.toByteArray();
-        return data;
+        return bout.toByteArray();
     }
 }

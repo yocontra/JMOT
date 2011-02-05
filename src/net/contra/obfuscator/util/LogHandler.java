@@ -1,6 +1,6 @@
 package net.contra.obfuscator.util;
 
-import net.contra.obfuscator.Constants;
+import net.contra.obfuscator.Settings;
 
 public class LogHandler {
     String Name = "Adopted";
@@ -18,7 +18,7 @@ public class LogHandler {
     }
 
     public void Debug(String msg) {
-        if (Constants.Debug) {
+        if (Settings.Debug) {
             System.out.println("[" + Name + "]" + "[DEBUG]" + msg);
         }
     }

@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ContraObfuscator.iml" filepath="$PROJECT_DIR$/ContraObfuscator.iml" />
       <module fileurl="file://$PROJECT_DIR$/JMO.iml" filepath="$PROJECT_DIR$/JMO.iml" />
     </modules>
   </component>

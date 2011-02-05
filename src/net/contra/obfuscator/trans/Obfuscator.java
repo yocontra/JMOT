@@ -3,15 +3,15 @@ package net.contra.obfuscator.trans;
 import com.sun.org.apache.bcel.internal.Constants;
 import com.sun.org.apache.bcel.internal.classfile.Method;
 import com.sun.org.apache.bcel.internal.generic.*;
+import net.contra.obfuscator.Settings;
 import net.contra.obfuscator.util.JarLoader;
 import net.contra.obfuscator.util.LogHandler;
 
 
 public class Obfuscator extends AbstractTransformer {
     public LogHandler Logger = new LogHandler("Obfuscator");
-    int KEY = 127;
-    String Location = "";
-    JarLoader LoadedJar;
+    private String Location = "";
+    private JarLoader LoadedJar;
 
     public Obfuscator(String loc) {
         Location = loc;
@@ -22,9 +22,8 @@ public class Obfuscator extends AbstractTransformer {
     }
 
     public void Transform() {
-
         for (ClassGen cg : LoadedJar.ClassEntries.values()) {
-            MethodGen cryptor = getDecryptor(cg, KEY);
+            MethodGen cryptor = getDecryptor(cg, Settings.CipherKey);
             for (Method method : cg.getMethods()) {
                 MethodGen mg = new MethodGen(method, cg.getClassName(), cg.getConstantPool());
                 InstructionList list = mg.getInstructionList();
@@ -36,11 +35,9 @@ public class Obfuscator extends AbstractTransformer {
                 for (InstructionHandle handle : handles) {
                     if (handle.getInstruction() instanceof LDC) {
                         String orig = ((LDC) handle.getInstruction()).getValue(cg.getConstantPool()).toString();
-                        int index = cg.getConstantPool().addString(cipher(orig));
-                        LDC newLDC = new LDC(index);
-                        handle.setInstruction(newLDC);
-                        INVOKESTATIC cryp = new INVOKESTATIC(cg.getConstantPool().addMethodref(cryptor));
-                        list.append(handle, cryp);
+                        int index = cg.getConstantPool().addString(getCiphered(orig));
+                        handle.setInstruction(new LDC(index));
+                        list.append(handle, new INVOKESTATIC(cg.getConstantPool().addMethodref(cryptor)));
                     }
                 }
                 list.setPositions();
@@ -63,10 +60,10 @@ public class Obfuscator extends AbstractTransformer {
         LoadedJar.Save(Location.replace(".jar", String.format("-%s.jar", tag)));
     }
 
-    public String cipher(String input) {
+    public String getCiphered(String input) {
         char[] inputChars = input.toCharArray();
         for (int i = 0; i < inputChars.length; i++) {
-            inputChars[i] = (char) (inputChars[i] ^ KEY);
+            inputChars[i] = (char) (inputChars[i] ^ Settings.CipherKey);
         }
         return new String(inputChars);
     }

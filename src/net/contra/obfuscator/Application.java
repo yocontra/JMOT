@@ -7,7 +7,7 @@ public class Application {
     static LogHandler Logger = new LogHandler("Application");
 
     public static void main(String[] args) {
-        Logger.Log(String.format("JMO v%s by Contra", Constants.Version));
+        Logger.Log(String.format("JMO v%s by Contra", Settings.Version));
         Logger.Log("Visit RECoders.org for Info");
         if (args.length < 1) {
             Logger.Error("Please provide the proper arguments!");
