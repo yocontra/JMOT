@@ -23,7 +23,7 @@ public class Obfuscator extends AbstractTransformer {
 
     public void Transform() {
         for (ClassGen cg : LoadedJar.ClassEntries.values()) {
-            MethodGen cryptor = getDecryptor(cg, Settings.CipherKey);
+            MethodGen cryptor = getDecryptor(cg, Settings.CipherName, Settings.CipherKey);
             for (Method method : cg.getMethods()) {
                 MethodGen mg = new MethodGen(method, cg.getClassName(), cg.getConstantPool());
                 InstructionList list = mg.getInstructionList();
@@ -68,7 +68,7 @@ public class Obfuscator extends AbstractTransformer {
         return new String(inputChars);
     }
 
-    MethodGen getDecryptor(ClassGen cg, int key) {
+    MethodGen getDecryptor(ClassGen cg, String name, int key) {
         InstructionList il = new InstructionList();
         InstructionFactory fa = new InstructionFactory(cg);
         String toChar = "()[C";
@@ -101,7 +101,7 @@ public class Obfuscator extends AbstractTransformer {
         il.getInstructionHandles()[8].setInstruction(new IF_ICMPGE(il.getInstructionHandles()[20]));
         il.setPositions();
         MethodGen mg = new MethodGen(Constants.ACC_STATIC | Constants.ACC_PUBLIC, Type.STRING, new Type[]{Type.STRING},
-                new String[]{"str"}, "wot", cg.getClassName(), il, cg.getConstantPool());
+                new String[]{"s"}, name, cg.getClassName(), il, cg.getConstantPool());
         mg.setMaxLocals();
         mg.setMaxLocals();
         mg.removeLineNumbers();
