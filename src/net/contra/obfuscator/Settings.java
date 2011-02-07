@@ -11,6 +11,5 @@ public class Settings {
     public static final int CipherKey = 127;
 
     //Name Obfuscation Settings
-    public static final String TempBuffer = "!-!";
     public static boolean UseInvalid = false;
 }

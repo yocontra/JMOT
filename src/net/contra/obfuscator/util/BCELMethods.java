@@ -37,6 +37,32 @@ public class BCELMethods {
             return null;
         }
     }
+    public static String getFieldInvokeClassName(Instruction ins, ConstantPoolGen cp) {
+        if (ins instanceof GETSTATIC) {
+            return (((GETSTATIC) ins).getClassName(cp));
+        } else if (ins instanceof PUTSTATIC) {
+            return (((PUTSTATIC) ins).getClassName(cp));
+        } else if (ins instanceof GETFIELD) {
+            return (((GETFIELD) ins).getClassName(cp));
+        } else if (ins instanceof PUTFIELD) {
+            return (((PUTFIELD) ins).getClassName(cp));
+        } else {
+            return null;
+        }
+    }
+    public static String getFieldInvokeSignature(Instruction ins, ConstantPoolGen cp) {
+        if (ins instanceof GETSTATIC) {
+            return (((GETSTATIC) ins).getSignature(cp));
+        } else if (ins instanceof PUTSTATIC) {
+            return (((PUTSTATIC) ins).getSignature(cp));
+        } else if (ins instanceof GETFIELD) {
+            return (((GETFIELD) ins).getSignature(cp));
+        } else if (ins instanceof PUTFIELD) {
+            return (((PUTFIELD) ins).getSignature(cp));
+        } else {
+            return null;
+        }
+    }
     public static Instruction getNewFieldInvoke(Instruction ins, int index) {
         if (ins instanceof GETSTATIC) {
             return new GETSTATIC(index);

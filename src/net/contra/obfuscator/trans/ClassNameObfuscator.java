@@ -1,8 +1,10 @@
 package net.contra.obfuscator.trans;
 
-import com.sun.org.apache.bcel.internal.classfile.Constant;
 import com.sun.org.apache.bcel.internal.classfile.Method;
-import com.sun.org.apache.bcel.internal.generic.*;
+import com.sun.org.apache.bcel.internal.generic.ClassGen;
+import com.sun.org.apache.bcel.internal.generic.InstructionHandle;
+import com.sun.org.apache.bcel.internal.generic.InstructionList;
+import com.sun.org.apache.bcel.internal.generic.MethodGen;
 import net.contra.obfuscator.util.BCELMethods;
 import net.contra.obfuscator.util.JarLoader;
 import net.contra.obfuscator.util.LogHandler;
@@ -24,6 +26,7 @@ public class ClassNameObfuscator implements ITransformer {
     public void Load() {
         LoadedJar = new JarLoader(Location);
     }
+
     //TODO: NEW, FIELDS, NEWARRAY, EXCLUSIONS, NOT MAIN
     public void Transform() {
         //We rename methods
@@ -54,10 +57,10 @@ public class ClassNameObfuscator implements ITransformer {
                         String newname = ChangedClasses.get(clazz);
                         int index = cg.getConstantPool().addMethodref(clazz, newname, methsig);
                         handle.setInstruction(BCELMethods.getNewInvoke(handle.getInstruction(), index));
-                    } else if(BCELMethods.isFieldInvoke(handle.getInstruction())){
+                    } else if (BCELMethods.isFieldInvoke(handle.getInstruction())) {
                         String clazz = BCELMethods.getInvokeClassName(handle.getInstruction(), cg.getConstantPool());
-                        String fieldname = BCELMethods.getInvokeMethodName(handle.getInstruction(), cg.getConstantPool());
-                        String fieldsig = BCELMethods.getInvokeSignature(handle.getInstruction(), cg.getConstantPool());
+                        String fieldname = BCELMethods.getFieldInvokeName(handle.getInstruction(), cg.getConstantPool());
+                        String fieldsig = BCELMethods.getFieldInvokeSignature(handle.getInstruction(), cg.getConstantPool());
                         if (!ChangedClasses.containsKey(clazz)) continue;
                         Logger.Debug("Class: " + clazz + " Name: " + fieldname + " Sig: " + fieldsig);
                         String newname = ChangedClasses.get(clazz);
