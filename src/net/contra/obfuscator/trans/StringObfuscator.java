@@ -9,9 +9,9 @@ import net.contra.obfuscator.util.LogHandler;
 
 
 public class StringObfuscator implements ITransformer {
-    LogHandler Logger = new LogHandler("StringObfuscator");
-    String Location = "";
-    JarLoader LoadedJar;
+    private final LogHandler Logger = new LogHandler("StringObfuscator");
+    private String Location = "";
+    private JarLoader LoadedJar;
 
     public StringObfuscator(String loc) {
         Location = loc;
@@ -57,7 +57,7 @@ public class StringObfuscator implements ITransformer {
         LoadedJar.Save(Location.replace(".jar", "-new.jar"));
     }
 
-    public String getCiphered(String input) {
+    String getCiphered(String input) {
         char[] inputChars = input.toCharArray();
         for (int i = 0; i < inputChars.length; i++) {
             inputChars[i] = (char) (inputChars[i] ^ Settings.CipherKey);

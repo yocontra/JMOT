@@ -1,19 +1,16 @@
 package net.contra.obfuscator;
 
-import net.contra.obfuscator.trans.AttributeObfuscator;
-import net.contra.obfuscator.trans.ITransformer;
-import net.contra.obfuscator.trans.MethodNameObfuscator;
-import net.contra.obfuscator.trans.StringObfuscator;
+import net.contra.obfuscator.trans.*;
 import net.contra.obfuscator.util.LogHandler;
 
 public class Application {
-    static LogHandler Logger = new LogHandler("Application");
+    private static final LogHandler Logger = new LogHandler("Application");
 
     public static void main(String[] args) {
         Logger.Log(String.format("JMO v%s by Contra", Settings.Version));
         Logger.Log("Visit RECoders.org for Info");
         if (args.length < 2) {
-            Logger.Error("Please provide the proper arguments!");
+            Logger.Error("Please provide at least two arguments!");
             return;
         }
         Logger.Log("Beginning Obfuscation");
@@ -26,8 +23,10 @@ public class Application {
                 obber = new AttributeObfuscator(args[0]);
             } else if (cmd.equalsIgnoreCase("method-name")) {
                 obber = new MethodNameObfuscator(args[0]);
+            } else if (cmd.equalsIgnoreCase("field-name")) {
+                obber = new FieldNameObfuscator(args[0]);
             } else {
-                Logger.Error("Please provide a proper transformer identifier");
+                Logger.Error("Please provide a proper transformer identifier!");
                 return;
             }
             obber.Logger.Log("Loading JarFile. Target: " + args[0]);

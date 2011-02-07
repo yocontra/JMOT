@@ -11,11 +11,11 @@ import java.util.Map;
 import java.util.Random;
 
 public class MethodNameObfuscator implements ITransformer {
-    LogHandler Logger = new LogHandler("MethodNameObfuscator");
+    private final LogHandler Logger = new LogHandler("MethodNameObfuscator");
     //ClassName, <OldSig, NewSig>
-    Map<String, Map<String, String>> ChangedMethods = new HashMap<String, Map<String, String>>();
-    String Location = "";
-    JarLoader LoadedJar;
+    private final Map<String, Map<String, String>> ChangedMethods = new HashMap<String, Map<String, String>>();
+    private String Location = "";
+    private JarLoader LoadedJar;
 
     public MethodNameObfuscator(String loc) {
         Location = loc;
@@ -25,19 +25,10 @@ public class MethodNameObfuscator implements ITransformer {
         LoadedJar = new JarLoader(Location);
     }
 
-    public static String getRandomString(int length) {
-        /*
-        String charset = "!0123456789abcdefghijklmnopqrstuvwxyz";
+    private static String getRandomString(int length) {
         Random rand = new Random(System.currentTimeMillis());
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < length; i++) {
-            int pos = rand.nextInt(charset.length());
-            sb.append(charset.charAt(pos));
-        }
-        return sb.toString();  */
-        Random rand = new Random(System.currentTimeMillis());
-        StringBuffer sb = new StringBuffer();
-        for(int i = 0; i < length; i++){
             sb.append(new char[rand.nextInt(255)]);
         }
         return sb.toString();
@@ -56,7 +47,7 @@ public class MethodNameObfuscator implements ITransformer {
                 mg.setName(newName);
                 cg.replaceMethod(method, mg.getMethod());
                 NewClassMethods.put(getBuffered(method.getName(), method.getSignature()), getBuffered(mg.getName(), mg.getSignature()));
-                Logger.Log("Obfuscating Names -> Class: " + cg.getClassName() + " Method: " + method.getName() + " <=> " + mg.getName());
+                Logger.Log("Obfuscating Method Names -> Class: " + cg.getClassName() + " Method: " + method.getName() + " <=> " + mg.getName());
             }
             ChangedMethods.put(cg.getClassName(), NewClassMethods);
         }
@@ -91,7 +82,6 @@ public class MethodNameObfuscator implements ITransformer {
 
                         if (!ChangedMethods.containsKey(clazz)) continue;
                         Map<String, String> classmeths = ChangedMethods.get(clazz);
-                        Logger.Debug("Class: " + clazz + " Name: " + methname + " Sig: " + methsig);
                         if (classmeths.get(getBuffered(methname, methsig)) != null) {
                             String newname = classmeths.get(getBuffered(methname, methsig)).split(Settings.TempBuffer)[0];
                             INVOKEVIRTUAL newinv = new INVOKEVIRTUAL(cg.getConstantPool().addMethodref(clazz, newname, methsig));
@@ -109,7 +99,7 @@ public class MethodNameObfuscator implements ITransformer {
         }
     }
 
-    public String getBuffered(String name, String sig) {
+    String getBuffered(String name, String sig) {
         return name + Settings.TempBuffer + sig;
     }
 

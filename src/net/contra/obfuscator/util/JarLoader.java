@@ -16,8 +16,8 @@ import java.util.jar.JarOutputStream;
 
 public class JarLoader {
 
-    public Map<String, ClassGen> ClassEntries = new HashMap<String, ClassGen>();
-    public Map<JarEntry, byte[]> NonClassEntries = new HashMap<JarEntry, byte[]>();
+    public final Map<String, ClassGen> ClassEntries = new HashMap<String, ClassGen>();
+    private final Map<JarEntry, byte[]> NonClassEntries = new HashMap<JarEntry, byte[]>();
 
     public JarLoader(String fileLocation) {
         try {

@@ -3,14 +3,10 @@ package net.contra.obfuscator.util;
 import net.contra.obfuscator.Settings;
 
 public class LogHandler {
-    String Name = "Adopted";
+    private String Name = "Adopted";
 
     public LogHandler(String className) {
         Name = className;
-    }
-
-    public void Message(String msg) {
-        System.out.println(msg);
     }
 
     public void Log(String msg) {

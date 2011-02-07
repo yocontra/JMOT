@@ -4,7 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class IO {
+class IO {
     public static byte[] GetBytes(InputStream inputStream) {
         ByteArrayOutputStream bout = new ByteArrayOutputStream();
         byte[] buffer = new byte[1024];
