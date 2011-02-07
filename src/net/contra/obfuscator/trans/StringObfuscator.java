@@ -8,12 +8,12 @@ import net.contra.obfuscator.util.JarLoader;
 import net.contra.obfuscator.util.LogHandler;
 
 
-public class Obfuscator extends AbstractTransformer {
-    public LogHandler Logger = new LogHandler("Obfuscator");
-    private String Location = "";
-    private JarLoader LoadedJar;
+public class StringObfuscator implements ITransformer {
+    LogHandler Logger = new LogHandler("StringObfuscator");
+    String Location = "";
+    JarLoader LoadedJar;
 
-    public Obfuscator(String loc) {
+    public StringObfuscator(String loc) {
         Location = loc;
     }
 
@@ -27,9 +27,7 @@ public class Obfuscator extends AbstractTransformer {
             for (Method method : cg.getMethods()) {
                 MethodGen mg = new MethodGen(method, cg.getClassName(), cg.getConstantPool());
                 InstructionList list = mg.getInstructionList();
-                if (list == null) {
-                    continue;
-                }
+                if (list == null) continue;
                 Logger.Log("Obfuscating Strings -> Class: " + cg.getClassName() + " Method: " + method.getName());
                 InstructionHandle[] handles = list.getInstructionHandles();
                 for (InstructionHandle handle : handles) {
@@ -44,7 +42,6 @@ public class Obfuscator extends AbstractTransformer {
                 mg.setInstructionList(list);
                 mg.setMaxLocals();
                 mg.setMaxStack();
-                mg.removeLineNumbers();
                 cg.replaceMethod(method, mg.getMethod());
             }
             if (cg.containsMethod(cryptor.getName(), cryptor.getSignature()) == null) {
@@ -56,8 +53,8 @@ public class Obfuscator extends AbstractTransformer {
         }
     }
 
-    public void Dump(String tag) {
-        LoadedJar.Save(Location.replace(".jar", String.format("-%s.jar", tag)));
+    public void Dump() {
+        LoadedJar.Save(Location.replace(".jar", "-new.jar"));
     }
 
     public String getCiphered(String input) {
@@ -100,6 +97,7 @@ public class Obfuscator extends AbstractTransformer {
         il.append(new ARETURN());
         il.getInstructionHandles()[8].setInstruction(new IF_ICMPGE(il.getInstructionHandles()[20]));
         il.setPositions();
+
         MethodGen mg = new MethodGen(Constants.ACC_STATIC | Constants.ACC_PUBLIC, Type.STRING, new Type[]{Type.STRING},
                 new String[]{arg}, name, cg.getClassName(), il, cg.getConstantPool());
         mg.setMaxLocals();
