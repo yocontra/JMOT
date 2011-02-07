@@ -5,10 +5,10 @@ import com.sun.org.apache.bcel.internal.generic.*;
 import net.contra.obfuscator.Settings;
 import net.contra.obfuscator.util.JarLoader;
 import net.contra.obfuscator.util.LogHandler;
+import net.contra.obfuscator.util.Misc;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 
 public class MethodNameObfuscator implements ITransformer {
     private final LogHandler Logger = new LogHandler("MethodNameObfuscator");
@@ -25,15 +25,6 @@ public class MethodNameObfuscator implements ITransformer {
         LoadedJar = new JarLoader(Location);
     }
 
-    private static String getRandomString(int length) {
-        Random rand = new Random(System.currentTimeMillis());
-        StringBuffer sb = new StringBuffer();
-        for (int i = 0; i < length; i++) {
-            sb.append(new char[rand.nextInt(255)]);
-        }
-        return sb.toString();
-    }
-
     public void Transform() {
         //We rename methods
         for (ClassGen cg : LoadedJar.ClassEntries.values()) {
@@ -43,11 +34,11 @@ public class MethodNameObfuscator implements ITransformer {
                 if (method.isInterface() || method.isAbstract() || method.getName().endsWith("init>") || method.getName().equals("main"))
                     continue; //TODO: Probably more shit we shouldn't rename
                 MethodGen mg = new MethodGen(method, cg.getClassName(), cg.getConstantPool());
-                String newName = getRandomString(20);
+                String newName = Misc.getRandomString(20);
                 mg.setName(newName);
                 cg.replaceMethod(method, mg.getMethod());
                 NewClassMethods.put(getBuffered(method.getName(), method.getSignature()), getBuffered(mg.getName(), mg.getSignature()));
-                Logger.Log("Obfuscating Method Names -> Class: " + cg.getClassName() + " Method: " + method.getName() + " <=> " + mg.getName());
+                Logger.Log("Obfuscating Method Names -> Class: " + cg.getClassName() + " Method: " + method.getName());
             }
             ChangedMethods.put(cg.getClassName(), NewClassMethods);
         }

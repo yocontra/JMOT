@@ -6,10 +6,10 @@ import com.sun.org.apache.bcel.internal.generic.*;
 import net.contra.obfuscator.Settings;
 import net.contra.obfuscator.util.JarLoader;
 import net.contra.obfuscator.util.LogHandler;
+import net.contra.obfuscator.util.Misc;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 
 public class FieldNameObfuscator implements ITransformer {
     private final LogHandler Logger = new LogHandler("FieldNameObfuscator");
@@ -26,15 +26,6 @@ public class FieldNameObfuscator implements ITransformer {
         LoadedJar = new JarLoader(Location);
     }
 
-    private static String getRandomString(int length) {
-        Random rand = new Random(System.currentTimeMillis());
-        StringBuffer sb = new StringBuffer();
-        for (int i = 0; i < length; i++) {
-            sb.append(new char[rand.nextInt(255)]);
-        }
-        return sb.toString();
-    }
-
     public void Transform() {
         //We rename methods
         for (ClassGen cg : LoadedJar.ClassEntries.values()) {
@@ -44,7 +35,7 @@ public class FieldNameObfuscator implements ITransformer {
                 if (field.isInterface() || field.isAbstract())
                     continue;
                 FieldGen fg = new FieldGen(field, cg.getConstantPool());
-                String newName = getRandomString(20);
+                String newName = Misc.getRandomString(20);
                 fg.setName(newName);
                 cg.replaceField(field, fg.getField());
                 NewFields.put(getBuffered(field.getName(), field.getSignature()), getBuffered(fg.getName(), fg.getSignature()));
@@ -52,7 +43,7 @@ public class FieldNameObfuscator implements ITransformer {
             }
             ChangedFields.put(cg.getClassName(), NewFields);
         }
-        //We fix all of the method calls
+        //We fix all of the field calls
         for (ClassGen cg : LoadedJar.ClassEntries.values()) {
             for (Method method : cg.getMethods()) {
                 MethodGen mg = new MethodGen(method, cg.getClassName(), cg.getConstantPool());

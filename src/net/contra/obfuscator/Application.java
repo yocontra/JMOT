@@ -21,6 +21,8 @@ public class Application {
                 obber = new StringObfuscator(args[0]);
             } else if (cmd.equalsIgnoreCase("attribute")) {
                 obber = new AttributeObfuscator(args[0]);
+            } else if (cmd.equalsIgnoreCase("class-name")) {
+                obber = new ClassNameObfuscator(args[0]);
             } else if (cmd.equalsIgnoreCase("method-name")) {
                 obber = new MethodNameObfuscator(args[0]);
             } else if (cmd.equalsIgnoreCase("field-name")) {
