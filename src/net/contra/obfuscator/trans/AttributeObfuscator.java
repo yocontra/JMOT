@@ -2,9 +2,11 @@ package net.contra.obfuscator.trans;
 
 import com.sun.org.apache.bcel.internal.classfile.Method;
 import com.sun.org.apache.bcel.internal.generic.ClassGen;
+import com.sun.org.apache.bcel.internal.generic.LocalVariableGen;
 import com.sun.org.apache.bcel.internal.generic.MethodGen;
 import net.contra.obfuscator.util.JarLoader;
 import net.contra.obfuscator.util.LogHandler;
+import net.contra.obfuscator.util.Misc;
 
 
 public class AttributeObfuscator implements ITransformer {
@@ -27,6 +29,12 @@ public class AttributeObfuscator implements ITransformer {
                 mg.removeCodeAttributes();
                 mg.removeAttributes();
                 mg.removeLineNumbers();
+                for(LocalVariableGen g : mg.getLocalVariables()){
+                    g.setName(Misc.getRandomString(5));
+                }
+                for(int i = 0; i < mg.getArgumentNames().length; i++){
+                    mg.setArgumentName(i, Misc.getRandomString(7));
+                }
                 cg.replaceMethod(method, mg.getMethod());
                 Logger.Log("Removed Attributes/Line Numbers -> Class: " + cg.getClassName() + " Method: " + method.getName());
             }

@@ -11,5 +11,5 @@ public class Settings {
     public static final int CipherKey = 127;
 
     //Name Obfuscation Settings
-    public static boolean UseInvalid = false;
+    public static boolean UseInvalid = true;
 }

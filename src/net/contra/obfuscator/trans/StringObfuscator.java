@@ -101,8 +101,7 @@ public class StringObfuscator implements ITransformer {
         MethodGen mg = new MethodGen(Constants.ACC_STATIC | Constants.ACC_PUBLIC, Type.STRING, new Type[]{Type.STRING},
                 new String[]{arg}, name, cg.getClassName(), il, cg.getConstantPool());
         mg.setMaxLocals();
-        mg.setMaxLocals();
-        mg.removeLineNumbers();
+        mg.setMaxStack();
         return mg;
     }
 }

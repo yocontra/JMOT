@@ -2,12 +2,6 @@ package net.contra.obfuscator.util;
 
 import com.sun.org.apache.bcel.internal.generic.*;
 
-/**
- * Created by IntelliJ IDEA.
- * User: Contra
- * Date: 2/7/11
- * Time: 9:08 AM
- */
 public class BCELMethods {
 
 

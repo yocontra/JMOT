@@ -21,6 +21,7 @@ public class Misc {
             return sb.toString();
         } else {
             String charset = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm";
+            charset = charset + charset + charset + charset; //Ghetto but this will improve the random-ness
             Random rand = new Random(System.currentTimeMillis());
             StringBuffer sb = new StringBuffer();
             for (int i = 0; i < length; i++) {
