@@ -2,6 +2,7 @@ package net.contra.obfuscator.trans;
 
 import com.sun.org.apache.bcel.internal.classfile.Method;
 import com.sun.org.apache.bcel.internal.generic.*;
+import net.contra.obfuscator.Settings;
 import net.contra.obfuscator.util.JarLoader;
 import net.contra.obfuscator.util.LogHandler;
 
@@ -28,15 +29,12 @@ public class IntegerComplicator implements ITransformer {
                 Logger.Log("Complicating Constant Integers -> Class: " + cg.getClassName() + " Method: " + method.getName());
                 InstructionHandle[] handles = list.getInstructionHandles();
                 for (InstructionHandle handle : handles) {
-                    if (handle.getInstruction() instanceof ICONST
-                            && (handle.getNext().getInstruction() instanceof PUTSTATIC
-                            || handle.getNext().getInstruction() instanceof PUTFIELD
-                            || handle.getNext().getInstruction() instanceof ISTORE)
-                            && handle.getPrev().getInstruction() instanceof ALOAD) {
-                        ICONST con = (ICONST) handle.getInstruction();
+                    if (handle.getInstruction() instanceof ICONST) {
                         InstructionList nlist = new InstructionList();
-                        nlist.append(new ICONST(1));
-                        nlist.append(new IMUL());
+                        for(int i = 0; i < Settings.Iterations; i++){
+                            nlist.append(new ICONST(1));
+                            nlist.append(new IMUL());
+                        }
                         list.append(handle, nlist);
                     }
                 }

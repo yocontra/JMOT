@@ -12,4 +12,7 @@ public class Settings {
     public static final String CipherName = "hax";
     public static final String CipherArg = "s";
     public static final int CipherKey = 127;
+
+    //Integer Complicator Settings
+    public static final int Iterations = 2;
 }

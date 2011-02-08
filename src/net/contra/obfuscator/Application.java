@@ -7,7 +7,7 @@ public class Application {
     private static final LogHandler Logger = new LogHandler("Application");
 
     public static void main(String[] args) {
-        Logger.Log(String.format("JMO v%s by Contra", Settings.Version));
+        Logger.Log(String.format("JMOT v%s by Contra", Settings.Version));
         Logger.Log("Visit RECoders.org for Info");
         if (args.length < 2) {
             Logger.Error("Please provide at least two arguments!");
@@ -27,6 +27,8 @@ public class Application {
                 obber = new MethodNameObfuscator(args[0]);
             } else if (cmd.equalsIgnoreCase("field-name")) {
                 obber = new FieldNameObfuscator(args[0]);
+            } else if (cmd.equalsIgnoreCase("int")){
+                obber = new IntegerComplicator(args[0]);
             } else {
                 Logger.Error("Please provide a proper transformer identifier!");
                 return;
