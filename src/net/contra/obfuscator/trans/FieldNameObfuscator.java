@@ -12,7 +12,7 @@ import java.util.Map;
 public class FieldNameObfuscator implements ITransformer {
     private final LogHandler Logger = new LogHandler("FieldNameObfuscator");
     //ClassName, <OldSig, NewSig>
-    private final Map<String, ArrayList<RenamePair>> ChangedFields = new HashMap<String, ArrayList<RenamePair>>();
+    private final Map<String, ArrayList<RenamedPair>> ChangedFields = new HashMap<String, ArrayList<RenamedPair>>();
     private String Location = "";
     private JarLoader LoadedJar;
 
@@ -27,16 +27,16 @@ public class FieldNameObfuscator implements ITransformer {
     public void Transform() {
         //We rename methods
         for (ClassGen cg : LoadedJar.ClassEntries.values()) {
-           ArrayList<RenamePair> NewFields = new ArrayList<RenamePair>();
+            ArrayList<RenamedPair> NewFields = new ArrayList<RenamedPair>();
             if (cg.isAbstract()) continue;
             for (Field field : cg.getFields()) {
                 if (field.isInterface() || field.isAbstract())
                     continue;
                 FieldGen fg = new FieldGen(field, cg.getConstantPool());
-                String newName = Misc.getRandomString(4);
+                String newName = Misc.getRandomName();
                 fg.setName(newName);
                 cg.replaceField(field, fg.getField());
-                RenamePair newPair = new RenamePair(field.getName(), field.getSignature(), fg.getName());
+                RenamedPair newPair = new RenamedPair(field.getName(), field.getSignature(), fg.getName());
                 NewFields.add(newPair);
                 Logger.Log("Obfuscating Field Names -> Class: " + cg.getClassName() + " Field: " + field.getName());
             }
@@ -57,8 +57,8 @@ public class FieldNameObfuscator implements ITransformer {
                         String fsig = BCELMethods.getFieldInvokeSignature(handle.getInstruction(), cg.getConstantPool()).trim().replace(" ", "");
 
                         if (!ChangedFields.containsKey(clazz)) continue;
-                        for(RenamePair pair : ChangedFields.get(clazz)){
-                            if(pair.OldName.equals(fname) && pair.OldSignature.equals(fsig)){
+                        for (RenamedPair pair : ChangedFields.get(clazz)) {
+                            if (pair.OldName.equals(fname) && pair.OldSignature.equals(fsig)) {
                                 int index = cg.getConstantPool().addFieldref(clazz, pair.NewName, fsig);
                                 handle.setInstruction(BCELMethods.getNewFieldInvoke(handle.getInstruction(), index));
                             }
@@ -69,7 +69,6 @@ public class FieldNameObfuscator implements ITransformer {
                 mg.setInstructionList(list);
                 mg.setMaxLocals();
                 mg.setMaxStack();
-                mg.removeLineNumbers();
                 cg.replaceMethod(method, mg.getMethod());
             }
         }

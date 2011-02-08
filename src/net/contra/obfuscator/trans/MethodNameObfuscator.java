@@ -14,7 +14,7 @@ import java.util.Map;
 public class MethodNameObfuscator implements ITransformer {
     private final LogHandler Logger = new LogHandler("MethodNameObfuscator");
     //ClassName, <OldSig, NewSig>
-    private final Map<String, ArrayList<RenamePair>> ChangedMethods = new HashMap<String, ArrayList<RenamePair>>();
+    private final Map<String, ArrayList<RenamedPair>> ChangedMethods = new HashMap<String, ArrayList<RenamedPair>>();
     private String Location = "";
     private JarLoader LoadedJar;
 
@@ -29,16 +29,16 @@ public class MethodNameObfuscator implements ITransformer {
     public void Transform() {
         //We rename methods
         for (ClassGen cg : LoadedJar.ClassEntries.values()) {
-            ArrayList<RenamePair> NewClassMethods = new ArrayList<RenamePair>();
+            ArrayList<RenamedPair> NewClassMethods = new ArrayList<RenamedPair>();
             if (cg.isAbstract()) continue; //TODO: Probably more shit we shouldn't rename
             for (Method method : cg.getMethods()) {
                 if (method.isInterface() || method.isAbstract() || method.getName().endsWith("init>") || method.getName().equals("main"))
                     continue; //TODO: Probably more shit we shouldn't rename
                 MethodGen mg = new MethodGen(method, cg.getClassName(), cg.getConstantPool());
-                String newName = Misc.getRandomString(200);
+                String newName = Misc.getRandomName();
                 mg.setName(newName);
                 cg.replaceMethod(method, mg.getMethod());
-                RenamePair pair = new RenamePair(method.getName(), method.getSignature(), mg.getName());
+                RenamedPair pair = new RenamedPair(method.getName(), method.getSignature(), mg.getName());
                 NewClassMethods.add(pair);
                 Logger.Log("Obfuscating Method Names -> Class: " + cg.getClassName() + " Method: " + method.getName());
             }
@@ -59,8 +59,8 @@ public class MethodNameObfuscator implements ITransformer {
                         String methsig = BCELMethods.getInvokeSignature(handle.getInstruction(), cg.getConstantPool()).trim();
 
                         if (!ChangedMethods.containsKey(clazz)) continue;
-                        for(RenamePair pair : ChangedMethods.get(clazz)){
-                            if(pair.OldName.equals(methname) && pair.OldSignature.equals(methsig)){
+                        for (RenamedPair pair : ChangedMethods.get(clazz)) {
+                            if (pair.OldName.equals(methname) && pair.OldSignature.equals(methsig)) {
                                 int index = cg.getConstantPool().addMethodref(clazz, pair.NewName, pair.OldSignature);
                                 handle.setInstruction(BCELMethods.getNewInvoke(handle.getInstruction(), index));
                             }
@@ -71,7 +71,6 @@ public class MethodNameObfuscator implements ITransformer {
                 mg.setInstructionList(list);
                 mg.setMaxLocals();
                 mg.setMaxStack();
-                mg.removeLineNumbers();
                 cg.replaceMethod(method, mg.getMethod());
             }
         }

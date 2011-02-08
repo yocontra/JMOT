@@ -18,6 +18,7 @@ public class BCELMethods {
             return false;
         }
     }
+
     public static String getFieldInvokeName(Instruction ins, ConstantPoolGen cp) {
         if (ins instanceof GETSTATIC) {
             return (((GETSTATIC) ins).getFieldName(cp));
@@ -31,6 +32,7 @@ public class BCELMethods {
             return null;
         }
     }
+
     public static String getFieldInvokeClassName(Instruction ins, ConstantPoolGen cp) {
         if (ins instanceof GETSTATIC) {
             return (((GETSTATIC) ins).getClassName(cp));
@@ -44,6 +46,7 @@ public class BCELMethods {
             return null;
         }
     }
+
     public static String getFieldInvokeSignature(Instruction ins, ConstantPoolGen cp) {
         if (ins instanceof GETSTATIC) {
             return (((GETSTATIC) ins).getSignature(cp));
@@ -57,6 +60,7 @@ public class BCELMethods {
             return null;
         }
     }
+
     public static Instruction getNewFieldInvoke(Instruction ins, int index) {
         if (ins instanceof GETSTATIC) {
             return new GETSTATIC(index);
@@ -65,11 +69,12 @@ public class BCELMethods {
         } else if (ins instanceof GETFIELD) {
             return new GETFIELD(index);
         } else if (ins instanceof PUTFIELD) {
-            return new PUTSTATIC(index);
+            return new PUTFIELD(index);
         } else {
             return null;
         }
     }
+
     public static boolean isInvoke(Instruction ins) {
         if (ins instanceof INVOKESTATIC) {
             return true;
@@ -83,6 +88,7 @@ public class BCELMethods {
             return false;
         }
     }
+
     public static String getInvokeMethodName(Instruction ins, ConstantPoolGen cp) {
         if (ins instanceof INVOKESTATIC) {
             INVOKESTATIC invst = (INVOKESTATIC) ins;
@@ -100,6 +106,7 @@ public class BCELMethods {
             return null;
         }
     }
+
     public static Instruction getNewInvoke(Instruction ins, int index) {
         if (ins instanceof INVOKESTATIC) {
             return new INVOKESTATIC(index);
@@ -115,6 +122,7 @@ public class BCELMethods {
             return null;
         }
     }
+
     public static String getInvokeSignature(Instruction ins, ConstantPoolGen cp) {
         if (ins instanceof INVOKESTATIC) {
             INVOKESTATIC invst = (INVOKESTATIC) ins;
@@ -132,6 +140,7 @@ public class BCELMethods {
             return null;
         }
     }
+
     public static String getInvokeClassName(Instruction ins, ConstantPoolGen cp) {
         if (ins instanceof INVOKESTATIC) {
             INVOKESTATIC invst = (INVOKESTATIC) ins;

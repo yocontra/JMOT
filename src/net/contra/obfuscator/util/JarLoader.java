@@ -17,7 +17,7 @@ import java.util.jar.JarOutputStream;
 public class JarLoader {
 
     public final Map<String, ClassGen> ClassEntries = new HashMap<String, ClassGen>();
-    private final Map<JarEntry, byte[]> NonClassEntries = new HashMap<JarEntry, byte[]>();
+    public final Map<String, byte[]> NonClassEntries = new HashMap<String, byte[]>();
 
     public JarLoader(String fileLocation) {
         try {
@@ -38,7 +38,7 @@ public class JarLoader {
                     ClassEntries.put(cg.getClassName(), cg);
                 } else {
                     byte[] contents = IO.GetBytes(entryStream);
-                    NonClassEntries.put(entry, contents);
+                    NonClassEntries.put(entry.getName(), contents);
                 }
             }
         } catch (Exception e) {
@@ -57,9 +57,9 @@ public class JarLoader {
                 jos.closeEntry();
                 jos.flush();
             }
-            for (JarEntry jbe : NonClassEntries.keySet()) {
-                JarEntry destEntry = new JarEntry(jbe.getName());
-                byte[] bite = NonClassEntries.get(jbe);
+            for (String n : NonClassEntries.keySet()) {
+                JarEntry destEntry = new JarEntry(n);
+                byte[] bite = NonClassEntries.get(n);
                 jos.putNextEntry(destEntry);
                 jos.write(bite);
                 jos.closeEntry();

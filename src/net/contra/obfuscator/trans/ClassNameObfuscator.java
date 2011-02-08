@@ -1,10 +1,8 @@
 package net.contra.obfuscator.trans;
 
+import com.sun.org.apache.bcel.internal.classfile.Constant;
 import com.sun.org.apache.bcel.internal.classfile.Method;
-import com.sun.org.apache.bcel.internal.generic.ClassGen;
-import com.sun.org.apache.bcel.internal.generic.InstructionHandle;
-import com.sun.org.apache.bcel.internal.generic.InstructionList;
-import com.sun.org.apache.bcel.internal.generic.MethodGen;
+import com.sun.org.apache.bcel.internal.generic.*;
 import net.contra.obfuscator.util.BCELMethods;
 import net.contra.obfuscator.util.JarLoader;
 import net.contra.obfuscator.util.LogHandler;
@@ -31,9 +29,17 @@ public class ClassNameObfuscator implements ITransformer {
     public void Transform() {
         //We rename methods
         for (ClassGen cg : LoadedJar.ClassEntries.values()) {
-            Map<String, String> NewClassMethods = new HashMap<String, String>();
             if (cg.isAbstract()) continue; //TODO: Probably more shit we shouldn't rename
-            String newName = Misc.getRandomString(20);
+            String newName = Misc.getRandomClassName();
+            byte[] manifest = LoadedJar.NonClassEntries.get("META-INF/MANIFEST.MF");
+            if (manifest != null) {
+                String man = new String(manifest);
+                if(man.contains("Main-Class: " + cg.getClassName())){
+                    Logger.Debug("Updating Manifest -> Class: " + cg.getClassName());
+                    man = man.replace("Main-Class: " + cg.getClassName(), "Main-Class: " + newName);
+                    LoadedJar.NonClassEntries.put("META-INF/MANIFEST.MF", man.getBytes());
+                }
+            }
             String oldName = cg.getClassName();
             cg.setClassName(newName);
             Logger.Log("Obfuscating Method Names -> Class: " + oldName + " - " + cg.getClassName());
@@ -53,26 +59,34 @@ public class ClassNameObfuscator implements ITransformer {
                         String methname = BCELMethods.getInvokeMethodName(handle.getInstruction(), cg.getConstantPool());
                         String methsig = BCELMethods.getInvokeSignature(handle.getInstruction(), cg.getConstantPool());
                         if (!ChangedClasses.containsKey(clazz)) continue;
-                        Logger.Debug("Class: " + clazz + " Name: " + methname + " Sig: " + methsig);
+                        Logger.Debug("Swapping Call -> Class: " + clazz + " Name: " + methname + " Sig: " + methsig);
                         String newname = ChangedClasses.get(clazz);
-                        int index = cg.getConstantPool().addMethodref(clazz, newname, methsig);
+                        int index = cg.getConstantPool().addMethodref(newname, methname, methsig);
                         handle.setInstruction(BCELMethods.getNewInvoke(handle.getInstruction(), index));
                     } else if (BCELMethods.isFieldInvoke(handle.getInstruction())) {
-                        String clazz = BCELMethods.getInvokeClassName(handle.getInstruction(), cg.getConstantPool());
+                        String clazz = BCELMethods.getFieldInvokeClassName(handle.getInstruction(), cg.getConstantPool());
                         String fieldname = BCELMethods.getFieldInvokeName(handle.getInstruction(), cg.getConstantPool());
                         String fieldsig = BCELMethods.getFieldInvokeSignature(handle.getInstruction(), cg.getConstantPool());
                         if (!ChangedClasses.containsKey(clazz)) continue;
-                        Logger.Debug("Class: " + clazz + " Name: " + fieldname + " Sig: " + fieldsig);
+                        Logger.Debug("Swapping Call -> Class: " + clazz + " Name: " + fieldname + " Sig: " + fieldsig);
                         String newname = ChangedClasses.get(clazz);
-                        int index = cg.getConstantPool().addFieldref(clazz, newname, fieldsig);
+                        int index = cg.getConstantPool().addFieldref(newname, fieldname, fieldsig);
                         handle.setInstruction(BCELMethods.getNewFieldInvoke(handle.getInstruction(), index));
+                    } else if (handle.getInstruction() instanceof NEW){
+                        NEW in = ((NEW) handle.getInstruction());
+                        String clazz = in.getLoadClassType(cg.getConstantPool()).getClassName();
+                        if (!ChangedClasses.containsKey(clazz)) continue;
+                        String newname = ChangedClasses.get(clazz);
+                        int index = cg.getConstantPool().addClass(newname);
+                        NEW out = new NEW(index);
+                        handle.setInstruction(out);
                     }
                 }
                 list.setPositions();
                 mg.setInstructionList(list);
+                mg.removeLocalVariables();
                 mg.setMaxLocals();
                 mg.setMaxStack();
-                mg.removeLineNumbers();
                 cg.replaceMethod(method, mg.getMethod());
             }
         }

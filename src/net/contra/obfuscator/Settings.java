@@ -1,15 +1,15 @@
 package net.contra.obfuscator;
 
+import net.contra.obfuscator.trans.ObfuscationType;
+
 public class Settings {
     //Application Settings
-    public static final double Version = 0.12;
+    public static final double Version = 0.13;
     public static final boolean Debug = true;
+    public static ObfuscationType ObfuscationLevel = ObfuscationType.Heavy;
 
     //String Obfuscation Settings
     public static final String CipherName = "hax";
     public static final String CipherArg = "s";
     public static final int CipherKey = 127;
-
-    //Name Obfuscation Settings
-    public static boolean UseInvalid = true;
 }

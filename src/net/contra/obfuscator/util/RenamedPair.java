@@ -6,20 +6,22 @@ package net.contra.obfuscator.util;
  * Date: 2/7/11
  * Time: 11:33 AM
  */
-public class RenamePair {
+public class RenamedPair {
     public String OldName;
     public String OldSignature;
     public String NewName;
 
-    public RenamePair(String oldName, String oldSig, String newName){
+    public RenamedPair(String oldName, String oldSig, String newName) {
         OldName = oldName;
         OldSignature = oldSig;
         NewName = newName;
     }
-    public String[] GetNew(){
-        return new String[] { NewName, OldSignature };
+
+    public String[] GetNew() {
+        return new String[]{NewName, OldSignature};
     }
-    public String[] GetOld(){
-        return new String[] { OldName, OldSignature };
+
+    public String[] GetOld() {
+        return new String[]{OldName, OldSignature};
     }
 }
