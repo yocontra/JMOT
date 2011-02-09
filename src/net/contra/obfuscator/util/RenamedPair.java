@@ -7,9 +7,9 @@ package net.contra.obfuscator.util;
  * Time: 11:33 AM
  */
 public class RenamedPair {
-    public String OldName;
-    public String OldSignature;
-    public String NewName;
+    public final String OldName;
+    public final String OldSignature;
+    public final String NewName;
 
     public RenamedPair(String oldName, String oldSig, String newName) {
         OldName = oldName;

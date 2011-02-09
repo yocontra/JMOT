@@ -6,7 +6,7 @@ public class Settings {
     //Application Settings
     public static final double Version = 0.13;
     public static final boolean Debug = true;
-    public static ObfuscationType ObfuscationLevel = ObfuscationType.Heavy;
+    public static final ObfuscationType ObfuscationLevel = ObfuscationType.Normal;
 
     //String Obfuscation Settings
     public static final String CipherName = "hax";
@@ -14,5 +14,5 @@ public class Settings {
     public static final int CipherKey = 127;
 
     //Integer Complicator Settings
-    public static final int Iterations = 2;
+    public static final int Iterations = 1;
 }

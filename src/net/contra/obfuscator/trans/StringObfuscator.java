@@ -23,7 +23,7 @@ public class StringObfuscator implements ITransformer {
 
     public void Transform() {
         for (ClassGen cg : LoadedJar.ClassEntries.values()) {
-            MethodGen cryptor = getDecryptor(cg, Settings.CipherName, Settings.CipherArg, Settings.CipherKey);
+            MethodGen cryptor = getDecryptor(cg);
             for (Method method : cg.getMethods()) {
                 MethodGen mg = new MethodGen(method, cg.getClassName(), cg.getConstantPool());
                 InstructionList list = mg.getInstructionList();
@@ -65,7 +65,7 @@ public class StringObfuscator implements ITransformer {
         return new String(inputChars);
     }
 
-    MethodGen getDecryptor(ClassGen cg, String name, String arg, int key) {
+    MethodGen getDecryptor(ClassGen cg) {
         InstructionList il = new InstructionList();
         InstructionFactory fa = new InstructionFactory(cg);
         String toChar = "()[C";
@@ -84,7 +84,7 @@ public class StringObfuscator implements ITransformer {
         il.append(new ALOAD(2));
         il.append(new ILOAD(3));
         il.append(new CALOAD());
-        il.append(new BIPUSH((byte) key));
+        il.append(new BIPUSH((byte) Settings.CipherKey));
         il.append(new IXOR());
         il.append(new I2C());
         il.append(new CASTORE());
@@ -99,7 +99,7 @@ public class StringObfuscator implements ITransformer {
         il.setPositions();
 
         MethodGen mg = new MethodGen(Constants.ACC_STATIC | Constants.ACC_PUBLIC, Type.STRING, new Type[]{Type.STRING},
-                new String[]{arg}, name, cg.getClassName(), il, cg.getConstantPool());
+                new String[]{Settings.CipherArg}, Settings.CipherName, cg.getClassName(), il, cg.getConstantPool());
         mg.setMaxLocals();
         mg.setMaxStack();
         return mg;

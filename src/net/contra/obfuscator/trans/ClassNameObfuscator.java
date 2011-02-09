@@ -1,6 +1,5 @@
 package net.contra.obfuscator.trans;
 
-import com.sun.org.apache.bcel.internal.classfile.Constant;
 import com.sun.org.apache.bcel.internal.classfile.Method;
 import com.sun.org.apache.bcel.internal.generic.*;
 import net.contra.obfuscator.util.BCELMethods;
@@ -34,7 +33,7 @@ public class ClassNameObfuscator implements ITransformer {
             byte[] manifest = LoadedJar.NonClassEntries.get("META-INF/MANIFEST.MF");
             if (manifest != null) {
                 String man = new String(manifest);
-                if(man.contains("Main-Class: " + cg.getClassName())){
+                if (man.contains("Main-Class: " + cg.getClassName())) {
                     Logger.Debug("Updating Manifest -> Class: " + cg.getClassName());
                     man = man.replace("Main-Class: " + cg.getClassName(), "Main-Class: " + newName);
                     LoadedJar.NonClassEntries.put("META-INF/MANIFEST.MF", man.getBytes());
@@ -72,7 +71,7 @@ public class ClassNameObfuscator implements ITransformer {
                         String newname = ChangedClasses.get(clazz);
                         int index = cg.getConstantPool().addFieldref(newname, fieldname, fieldsig);
                         handle.setInstruction(BCELMethods.getNewFieldInvoke(handle.getInstruction(), index));
-                    } else if (handle.getInstruction() instanceof NEW){
+                    } else if (handle.getInstruction() instanceof NEW) {
                         NEW in = ((NEW) handle.getInstruction());
                         String clazz = in.getLoadClassType(cg.getConstantPool()).getClassName();
                         if (!ChangedClasses.containsKey(clazz)) continue;

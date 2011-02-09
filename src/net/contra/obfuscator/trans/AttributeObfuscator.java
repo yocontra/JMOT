@@ -11,7 +11,7 @@ import net.contra.obfuscator.util.Misc;
 
 
 public class AttributeObfuscator implements ITransformer {
-    LogHandler Logger = new LogHandler("AttributeObfuscator");
+    private final LogHandler Logger = new LogHandler("AttributeObfuscator");
     private String Location = "";
     private JarLoader LoadedJar;
 

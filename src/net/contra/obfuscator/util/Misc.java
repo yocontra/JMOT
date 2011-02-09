@@ -41,7 +41,7 @@ public class Misc {
         }
     }
 
-    public static String getRandomString(int length, boolean simple) {
+    private static String getRandomString(int length, boolean simple) {
         if (!simple) {
             Random rand = new Random(System.currentTimeMillis());
             StringBuffer sb = new StringBuffer();
