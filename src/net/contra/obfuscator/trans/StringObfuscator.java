@@ -22,33 +22,40 @@ public class StringObfuscator implements ITransformer {
     }
 
     public void Transform() {
-        for (ClassGen cg : LoadedJar.ClassEntries.values()) {
-            MethodGen cryptor = getDecryptor(cg);
-            for (Method method : cg.getMethods()) {
-                MethodGen mg = new MethodGen(method, cg.getClassName(), cg.getConstantPool());
-                InstructionList list = mg.getInstructionList();
-                if (list == null) continue;
-                Logger.Log("Obfuscating Strings -> Class: " + cg.getClassName() + " Method: " + method.getName());
-                InstructionHandle[] handles = list.getInstructionHandles();
-                for (InstructionHandle handle : handles) {
-                    if (handle.getInstruction() instanceof LDC) {
-                        String orig = ((LDC) handle.getInstruction()).getValue(cg.getConstantPool()).toString();
-                        int index = cg.getConstantPool().addString(getCiphered(orig));
-                        handle.setInstruction(new LDC(index));
-                        list.append(handle, new INVOKESTATIC(cg.getConstantPool().addMethodref(cryptor)));
+        for (int i = 0; i < Settings.CipherKeys.length; i++) {
+            for (ClassGen cg : LoadedJar.ClassEntries.values()) {
+                MethodGen cryptor = getDecryptor(cg, i);
+                for (Method method : cg.getMethods()) {
+                    MethodGen mg = new MethodGen(method, cg.getClassName(), cg.getConstantPool());
+                    InstructionList list = mg.getInstructionList();
+                    if (list == null) continue;
+                    Logger.Log("Obfuscating Strings -> Class: " + cg.getClassName() + " Method: " + method.getName());
+                    InstructionHandle[] handles = list.getInstructionHandles();
+                    for (InstructionHandle handle : handles) {
+                        if (handle.getInstruction() instanceof LDC) {
+                            try {
+                                String orig = ((LDC) handle.getInstruction()).getValue(cg.getConstantPool()).toString();
+                                int index = cg.getConstantPool().addString(getCiphered(orig, Settings.CipherKeys[i]));
+                                handle.setInstruction(new LDC(index));
+                                list.append(handle, new INVOKESTATIC(cg.getConstantPool().addMethodref(cryptor)));
+                            } catch (Exception e) {
+                                Logger.Debug("Caught error, skipping instruction.");
+                                continue;
+                            }
+                        }
                     }
+                    list.setPositions();
+                    mg.setInstructionList(list);
+                    mg.setMaxLocals();
+                    mg.setMaxStack();
+                    cg.replaceMethod(method, mg.getMethod());
                 }
-                list.setPositions();
-                mg.setInstructionList(list);
-                mg.setMaxLocals();
-                mg.setMaxStack();
-                cg.replaceMethod(method, mg.getMethod());
-            }
-            if (cg.containsMethod(cryptor.getName(), cryptor.getSignature()) == null) {
-                Logger.Log("Injecting Cipher Method -> Class: " + cg.getClassName());
-                cg.addMethod(cryptor.getMethod());
-            } else {
-                Logger.Error("Cipher Method Already Exists! -> Class: " + cg.getClassName());
+                if (cg.containsMethod(cryptor.getName(), cryptor.getSignature()) == null) {
+                    Logger.Log("Injecting Cipher Method -> Class: " + cg.getClassName());
+                    cg.addMethod(cryptor.getMethod());
+                } else {
+                    Logger.Error("Cipher Method Already Exists! -> Class: " + cg.getClassName());
+                }
             }
         }
     }
@@ -57,15 +64,15 @@ public class StringObfuscator implements ITransformer {
         LoadedJar.Save(Location.replace(".jar", "-new.jar"));
     }
 
-    String getCiphered(String input) {
+    String getCiphered(String input, int key) {
         char[] inputChars = input.toCharArray();
         for (int i = 0; i < inputChars.length; i++) {
-            inputChars[i] = (char) (inputChars[i] ^ Settings.CipherKey);
+            inputChars[i] = (char) (inputChars[i] ^ key);
         }
         return new String(inputChars);
     }
 
-    MethodGen getDecryptor(ClassGen cg) {
+    MethodGen getDecryptor(ClassGen cg, int i) {
         InstructionList il = new InstructionList();
         InstructionFactory fa = new InstructionFactory(cg);
         String toChar = "()[C";
@@ -84,7 +91,7 @@ public class StringObfuscator implements ITransformer {
         il.append(new ALOAD(2));
         il.append(new ILOAD(3));
         il.append(new CALOAD());
-        il.append(new BIPUSH((byte) Settings.CipherKey));
+        il.append(new BIPUSH((byte) Settings.CipherKeys[i]));
         il.append(new IXOR());
         il.append(new I2C());
         il.append(new CASTORE());
@@ -99,7 +106,7 @@ public class StringObfuscator implements ITransformer {
         il.setPositions();
 
         MethodGen mg = new MethodGen(Constants.ACC_STATIC | Constants.ACC_PUBLIC, Type.STRING, new Type[]{Type.STRING},
-                new String[]{Settings.CipherArg}, Settings.CipherName, cg.getClassName(), il, cg.getConstantPool());
+                new String[]{Settings.CipherArg}, Settings.CipherName + i, cg.getClassName(), il, cg.getConstantPool());
         mg.setMaxLocals();
         mg.setMaxStack();
         return mg;

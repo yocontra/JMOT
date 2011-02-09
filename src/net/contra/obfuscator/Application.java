@@ -13,11 +13,13 @@ public class Application {
             Logger.Error("Please provide at least two arguments!");
             return;
         }
+        Logger.Log("Running with ObfuscationLevel " + Settings.ObfuscationLevel.name());
+        SetParameters();
         Logger.Log("Beginning Obfuscation");
         try {
             String cmd = args[1];
             ITransformer obber;
-            if(cmd.equalsIgnoreCase("string")){
+            if (cmd.equalsIgnoreCase("string")) {
                 obber = new StringObfuscator(args[0]);
             } else if (cmd.equalsIgnoreCase("attribute")) {
                 obber = new AttributeObfuscator(args[0]);
@@ -27,7 +29,7 @@ public class Application {
                 obber = new MethodNameObfuscator(args[0]);
             } else if (cmd.equalsIgnoreCase("field-name")) {
                 obber = new FieldNameObfuscator(args[0]);
-            } else if (cmd.equalsIgnoreCase("int")){
+            } else if (cmd.equalsIgnoreCase("int")) {
                 obber = new IntegerComplicator(args[0]);
             } else {
                 Logger.Error("Please provide a proper transformer identifier!");
@@ -45,5 +47,30 @@ public class Application {
             return;
         }
         Logger.Log("Process Completed!");
+    }
+
+    public static void SetParameters() {
+        switch (Settings.ObfuscationLevel) {
+            case Light:
+                Settings.CipherKeys = new int[]{127};
+                Settings.Iterations = 0;
+                break;
+            case Normal:
+                Settings.CipherKeys = new int[]{81, 127};
+                Settings.Iterations = 1;
+                break;
+            case Heavy:
+                Settings.CipherKeys = new int[]{85, 127, 200};
+                Settings.Iterations = 3;
+                break;
+            case Insane:
+                Settings.CipherKeys = new int[]{1, 2, 3, 4, 5, 89, 85, 127};
+                Settings.Iterations = 20;
+                break;
+            default:
+                Settings.CipherKeys = new int[]{127};
+                Settings.Iterations = 0;
+                break;
+        }
     }
 }

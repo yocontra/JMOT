@@ -4,15 +4,15 @@ import net.contra.obfuscator.trans.ObfuscationType;
 
 public class Settings {
     //Application Settings
-    public static final double Version = 0.13;
+    public static final double Version = 0.14; //Don't Touch
     public static final boolean Debug = true;
     public static final ObfuscationType ObfuscationLevel = ObfuscationType.Normal;
 
     //String Obfuscation Settings
     public static final String CipherName = "hax";
     public static final String CipherArg = "s";
-    public static final int CipherKey = 127;
+    public static int[] CipherKeys = {}; //Don't Touch
 
     //Integer Complicator Settings
-    public static final int Iterations = 1;
+    public static int Iterations = 0; //Don't Touch
 }
