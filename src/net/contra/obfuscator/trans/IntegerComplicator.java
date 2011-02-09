@@ -2,6 +2,8 @@ package net.contra.obfuscator.trans;
 
 import com.sun.org.apache.bcel.internal.classfile.Method;
 import com.sun.org.apache.bcel.internal.generic.*;
+import net.contra.obfuscator.ITransformer;
+import net.contra.obfuscator.ObfuscationType;
 import net.contra.obfuscator.Settings;
 import net.contra.obfuscator.util.BCELMethods;
 import net.contra.obfuscator.util.JarLoader;
@@ -31,6 +33,7 @@ public class IntegerComplicator implements ITransformer {
                 InstructionHandle[] handles = list.getInstructionHandles();
                 for (InstructionHandle handle : handles) {
                     if (handle.getPosition() >= handles.length - 1) continue;
+
                     if (Settings.ObfuscationLevel.getLevel() <= ObfuscationType.Normal.getLevel()) {
                         //If we have it on normal or light, we won't obfuscate boolean values :)
                         if (BCELMethods.isFieldInvoke(handle.getNext().getInstruction())) {
@@ -41,9 +44,12 @@ public class IntegerComplicator implements ITransformer {
                             if (mg.getSignature().trim().endsWith("Z")) continue;
                         }
                     }
+
                     if (handle.getInstruction() instanceof ICONST
                             || handle.getInstruction() instanceof BIPUSH
-                            || handle.getInstruction() instanceof SIPUSH) {
+                            || handle.getInstruction() instanceof SIPUSH
+                            || handle.getInstruction() instanceof ILOAD
+                            || (handle.getInstruction() instanceof LDC && handle.getNext().getInstruction() instanceof IASTORE)) {
                         InstructionList nlist = new InstructionList();
                         for (int i = 0; i < Settings.Iterations; i++) {
                             nlist.append(new ICONST(1));
@@ -53,21 +59,11 @@ public class IntegerComplicator implements ITransformer {
                                 nlist.append(new IDIV());
                             }
                         }
-                        list.append(handle, nlist);
-                    }
-                    if (handle.getInstruction() instanceof LDC
-                            && handle.getNext().getInstruction() instanceof IASTORE
-                            && Settings.ObfuscationLevel.getLevel() >= ObfuscationType.Normal.getLevel()) {
-                        //If we have it on normal, heavy, or insane it will obfuscate
-                        InstructionList nlist = new InstructionList();
-                        for (int i = 0; i < Settings.Iterations; i++) {
-                            nlist.append(new ICONST(1));
-                            nlist.append(new IMUL());
-                            if (Settings.ObfuscationLevel.getLevel() > ObfuscationType.Normal.getLevel()) {
-                                nlist.append(new ICONST(1));
-                                nlist.append(new IDIV());
-                            }
-                        }
+                        /*
+                        if(Settings.ObfuscationLevel.getLevel() > ObfuscationType.Normal.getLevel()
+                                && (handle.getPosition()-1) >= 0){
+                            list.append(handles[handle.getPosition()-1], nlist);
+                        } disabled for now... */
                         list.append(handle, nlist);
                     }
                 }

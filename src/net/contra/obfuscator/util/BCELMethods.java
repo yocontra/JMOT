@@ -10,9 +10,7 @@ public class BCELMethods {
             return true;
         } else if (ins instanceof PUTSTATIC) {
             return true;
-        } else if (ins instanceof GETFIELD) {
-            return true;
-        } else return ins instanceof PUTFIELD;
+        } else return ins instanceof GETFIELD || ins instanceof PUTFIELD;
     }
 
     public static String getFieldInvokeName(Instruction ins, ConstantPoolGen cp) {
@@ -76,9 +74,7 @@ public class BCELMethods {
             return true;
         } else if (ins instanceof INVOKEVIRTUAL) {
             return true;
-        } else if (ins instanceof INVOKEINTERFACE) {
-            return true;
-        } else return ins instanceof INVOKESPECIAL;
+        } else return ins instanceof INVOKEINTERFACE || ins instanceof INVOKESPECIAL;
     }
 
     public static String getInvokeMethodName(Instruction ins, ConstantPoolGen cp) {

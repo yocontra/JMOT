@@ -5,6 +5,7 @@ import com.sun.org.apache.bcel.internal.generic.ClassGen;
 import com.sun.org.apache.bcel.internal.generic.InstructionHandle;
 import com.sun.org.apache.bcel.internal.generic.InstructionList;
 import com.sun.org.apache.bcel.internal.generic.MethodGen;
+import net.contra.obfuscator.ITransformer;
 import net.contra.obfuscator.util.*;
 
 import java.util.ArrayList;

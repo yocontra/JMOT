@@ -1,10 +1,10 @@
-package net.contra.obfuscator.trans;
+package net.contra.obfuscator;
 
 import net.contra.obfuscator.util.LogHandler;
 
 public interface ITransformer {
 
-    LogHandler Logger = new LogHandler("Transformer");
+    public LogHandler Logger = new LogHandler("Transformer");
 
     void Load();
 

@@ -3,6 +3,7 @@ package net.contra.obfuscator.trans;
 import com.sun.org.apache.bcel.internal.classfile.Field;
 import com.sun.org.apache.bcel.internal.classfile.Method;
 import com.sun.org.apache.bcel.internal.generic.*;
+import net.contra.obfuscator.ITransformer;
 import net.contra.obfuscator.util.*;
 
 import java.util.ArrayList;

@@ -13,7 +13,7 @@ public class Application {
             Logger.Error("Please provide at least two arguments!");
             return;
         }
-        Logger.Log("Running with ObfuscationLevel " + Settings.ObfuscationLevel.name());
+        Logger.Log("Running with Obfuscation Level: " + Settings.ObfuscationLevel.getName());
         SetParameters();
         Logger.Log("Beginning Obfuscation");
         try {

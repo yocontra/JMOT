@@ -2,6 +2,7 @@ package net.contra.obfuscator.trans;
 
 import com.sun.org.apache.bcel.internal.classfile.Method;
 import com.sun.org.apache.bcel.internal.generic.*;
+import net.contra.obfuscator.ITransformer;
 import net.contra.obfuscator.util.BCELMethods;
 import net.contra.obfuscator.util.JarLoader;
 import net.contra.obfuscator.util.LogHandler;
