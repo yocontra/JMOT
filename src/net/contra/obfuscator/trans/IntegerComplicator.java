@@ -44,7 +44,6 @@ public class IntegerComplicator implements ITransformer {
                             if (mg.getSignature().trim().endsWith("Z")) continue;
                         }
                     }
-
                     if (handle.getInstruction() instanceof ICONST
                             || handle.getInstruction() instanceof BIPUSH
                             || handle.getInstruction() instanceof SIPUSH
@@ -59,11 +58,17 @@ public class IntegerComplicator implements ITransformer {
                                 nlist.append(new IDIV());
                             }
                         }
-                        /*
                         if(Settings.ObfuscationLevel.getLevel() > ObfuscationType.Normal.getLevel()
-                                && (handle.getPosition()-1) >= 0){
-                            list.append(handles[handle.getPosition()-1], nlist);
-                        } disabled for now... */
+                                && handle.getPrev() != null){
+                            InstructionList prelist = new InstructionList();
+                            prelist.append(new ICONST(0));
+                            for (int i = 0; i < Settings.Iterations; i++) {
+                                prelist.append(new ICONST(0));
+                                prelist.append(new IADD());
+                            }
+                            list.insert(handle, prelist);
+                            nlist.insert(new IADD());
+                        }
                         list.append(handle, nlist);
                     }
                 }
