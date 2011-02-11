@@ -65,7 +65,7 @@ public class Application {
                 break;
             case Insane:
                 Settings.CipherKeys = new int[]{1, 2, 3, 4, 5, 89, 85, 127};
-                Settings.Iterations = 5;
+                Settings.Iterations = 15;
                 break;
             default:
                 Settings.CipherKeys = new int[]{127};

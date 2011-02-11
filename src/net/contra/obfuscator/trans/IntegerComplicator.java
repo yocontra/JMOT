@@ -34,7 +34,7 @@ public class IntegerComplicator implements ITransformer {
                 for (InstructionHandle handle : handles) {
                     if (handle.getPosition() >= handles.length - 1) continue;
 
-                    if (Settings.ObfuscationLevel.getLevel() <= ObfuscationType.Normal.getLevel()) {
+                    if (Settings.ObfuscationLevel.getLevel() < ObfuscationType.Normal.getLevel()) {
                         //If we have it on normal or light, we won't obfuscate boolean values :)
                         if (BCELMethods.isFieldInvoke(handle.getNext().getInstruction())) {
                             String sig = BCELMethods.getFieldInvokeSignature(handle.getNext().getInstruction(), cg.getConstantPool());
@@ -51,11 +51,13 @@ public class IntegerComplicator implements ITransformer {
                             || (handle.getInstruction() instanceof LDC && handle.getNext().getInstruction() instanceof IASTORE)) {
                         InstructionList nlist = new InstructionList();
                         for (int i = 0; i < Settings.Iterations; i++) {
-                            nlist.append(new ICONST(1));
-                            nlist.append(new IMUL());
+                            nlist.append(new ICONST(0));
+                            nlist.append(new IADD());
                             if (Settings.ObfuscationLevel.getLevel() > ObfuscationType.Normal.getLevel()) {
                                 nlist.append(new ICONST(1));
-                                nlist.append(new IDIV());
+                                nlist.append(new IMUL());
+                                nlist.append(new ICONST(1));
+                                nlist.append(new IMUL());
                             }
                         }
                         if(Settings.ObfuscationLevel.getLevel() > ObfuscationType.Normal.getLevel()
