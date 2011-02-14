@@ -1,8 +1,9 @@
-package net.contra.obfuscator.util;
+package net.contra.obfuscator.util.bcel;
 
 import com.sun.org.apache.bcel.internal.classfile.ClassParser;
 import com.sun.org.apache.bcel.internal.classfile.JavaClass;
 import com.sun.org.apache.bcel.internal.generic.ClassGen;
+import net.contra.obfuscator.util.misc.IO;
 
 import java.io.File;
 import java.io.FileOutputStream;

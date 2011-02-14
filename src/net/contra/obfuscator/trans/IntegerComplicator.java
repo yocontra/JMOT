@@ -5,9 +5,9 @@ import com.sun.org.apache.bcel.internal.generic.*;
 import net.contra.obfuscator.ITransformer;
 import net.contra.obfuscator.ObfuscationType;
 import net.contra.obfuscator.Settings;
-import net.contra.obfuscator.util.BCELMethods;
-import net.contra.obfuscator.util.JarLoader;
-import net.contra.obfuscator.util.LogHandler;
+import net.contra.obfuscator.util.bcel.BCELMethods;
+import net.contra.obfuscator.util.bcel.JarLoader;
+import net.contra.obfuscator.util.misc.LogHandler;
 
 
 public class IntegerComplicator implements ITransformer {
@@ -60,8 +60,8 @@ public class IntegerComplicator implements ITransformer {
                                 nlist.append(new IMUL());
                             }
                         }
-                        if(Settings.ObfuscationLevel.getLevel() > ObfuscationType.Normal.getLevel()
-                                && handle.getPrev() != null){
+                        if (Settings.ObfuscationLevel.getLevel() > ObfuscationType.Normal.getLevel()
+                                && handle.getPrev() != null) {
                             InstructionList prelist = new InstructionList();
                             prelist.append(new ICONST(0));
                             for (int i = 0; i < Settings.Iterations; i++) {
@@ -84,7 +84,7 @@ public class IntegerComplicator implements ITransformer {
     }
 
     public void Dump() {
-        LoadedJar.Save(Location.replace(".jar", "-new.jar"));
+        LoadedJar.Save(Location.replace(".jar", Settings.FileTag + ".jar"));
     }
 }
 

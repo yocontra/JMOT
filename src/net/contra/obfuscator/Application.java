@@ -1,7 +1,7 @@
 package net.contra.obfuscator;
 
 import net.contra.obfuscator.trans.*;
-import net.contra.obfuscator.util.LogHandler;
+import net.contra.obfuscator.util.misc.LogHandler;
 
 public class Application {
     private static final LogHandler Logger = new LogHandler("Application");
@@ -29,8 +29,10 @@ public class Application {
                 obber = new MethodNameObfuscator(args[0]);
             } else if (cmd.equalsIgnoreCase("field-name")) {
                 obber = new FieldNameObfuscator(args[0]);
-            } else if (cmd.equalsIgnoreCase("int")) {
+            } else if (cmd.equalsIgnoreCase("int-complicate")) {
                 obber = new IntegerComplicator(args[0]);
+            } else if (cmd.equalsIgnoreCase("int-boxer")) {
+                obber = new IntegerBoxer(args[0]);
             } else {
                 Logger.Error("Please provide a proper transformer identifier!");
                 return;

@@ -1,4 +1,4 @@
-package net.contra.obfuscator.util;
+package net.contra.obfuscator.util.misc;
 
 import net.contra.obfuscator.Settings;
 

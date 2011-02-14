@@ -6,7 +6,12 @@ import com.sun.org.apache.bcel.internal.generic.InstructionHandle;
 import com.sun.org.apache.bcel.internal.generic.InstructionList;
 import com.sun.org.apache.bcel.internal.generic.MethodGen;
 import net.contra.obfuscator.ITransformer;
-import net.contra.obfuscator.util.*;
+import net.contra.obfuscator.Settings;
+import net.contra.obfuscator.util.bcel.BCELMethods;
+import net.contra.obfuscator.util.bcel.JarLoader;
+import net.contra.obfuscator.util.misc.LogHandler;
+import net.contra.obfuscator.util.misc.Misc;
+import net.contra.obfuscator.util.misc.RenamedPair;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -78,6 +83,6 @@ public class MethodNameObfuscator implements ITransformer {
     }
 
     public void Dump() {
-        LoadedJar.Save(Location.replace(".jar", "-new.jar"));
+        LoadedJar.Save(Location.replace(".jar", Settings.FileTag + ".jar"));
     }
 }

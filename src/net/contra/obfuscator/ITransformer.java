@@ -1,6 +1,6 @@
 package net.contra.obfuscator;
 
-import net.contra.obfuscator.util.LogHandler;
+import net.contra.obfuscator.util.misc.LogHandler;
 
 public interface ITransformer {
 

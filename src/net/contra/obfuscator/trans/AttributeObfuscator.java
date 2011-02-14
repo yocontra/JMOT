@@ -6,9 +6,10 @@ import com.sun.org.apache.bcel.internal.generic.ClassGen;
 import com.sun.org.apache.bcel.internal.generic.LocalVariableGen;
 import com.sun.org.apache.bcel.internal.generic.MethodGen;
 import net.contra.obfuscator.ITransformer;
-import net.contra.obfuscator.util.JarLoader;
-import net.contra.obfuscator.util.LogHandler;
-import net.contra.obfuscator.util.Misc;
+import net.contra.obfuscator.Settings;
+import net.contra.obfuscator.util.bcel.JarLoader;
+import net.contra.obfuscator.util.misc.LogHandler;
+import net.contra.obfuscator.util.misc.Misc;
 
 
 public class AttributeObfuscator implements ITransformer {
@@ -47,7 +48,7 @@ public class AttributeObfuscator implements ITransformer {
     }
 
     public void Dump() {
-        LoadedJar.Save(Location.replace(".jar", "-new.jar"));
+        LoadedJar.Save(Location.replace(".jar", Settings.FileTag + ".jar"));
     }
 }
 

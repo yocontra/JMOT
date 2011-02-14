@@ -3,8 +3,13 @@ package net.contra.obfuscator;
 public class Settings {
     //Application Settings
     public static final double Version = 0.14; //Don't Touch
-    public static final boolean Debug = false;
-    public static final ObfuscationType ObfuscationLevel = ObfuscationType.Insane;
+    public static final boolean Debug = true;
+    public static final ObfuscationType ObfuscationLevel = ObfuscationType.Normal;
+    public static String FileTag = "-new";
+
+    //Integer Boxer Settings
+    public static final String BoxerName = "box";
+    public static final String BoxerArg = "s";
 
     //String Obfuscation Settings
     public static final String CipherName = "hax";

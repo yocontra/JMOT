@@ -1,4 +1,4 @@
-package net.contra.obfuscator.util;
+package net.contra.obfuscator.util.misc;
 
 /**
  * Created by IntelliJ IDEA.

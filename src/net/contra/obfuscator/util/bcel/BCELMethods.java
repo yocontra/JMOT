@@ -1,4 +1,4 @@
-package net.contra.obfuscator.util;
+package net.contra.obfuscator.util.bcel;
 
 import com.sun.org.apache.bcel.internal.generic.*;
 
@@ -67,6 +67,38 @@ public class BCELMethods {
         } else {
             return null;
         }
+    }
+
+    public static boolean isInteger(Instruction ins) {
+        if (ins instanceof ICONST) {
+            return true;
+        } else if (ins instanceof BIPUSH) {
+            return true;
+        } else if (ins instanceof SIPUSH) {
+            return true;
+        }
+        return false;
+    }
+
+   public static int getIntegerValue(Instruction ins) {
+        if (ins instanceof ICONST) {
+            return ((ICONST) ins).getValue().intValue();
+        } else if (ins instanceof BIPUSH) {
+            return ((BIPUSH) ins).getValue().intValue();
+        } else if (ins instanceof SIPUSH) {
+            return ((SIPUSH) ins).getValue().intValue();
+        }
+        return -9001;
+    }
+    public static Instruction getIntegerLoad(Instruction ins, int i) {
+        if (ins instanceof ICONST) {
+            return new ICONST(i);
+        } else if (ins instanceof BIPUSH) {
+            return new BIPUSH((byte)i);
+        } else if (ins instanceof SIPUSH) {
+            return new SIPUSH((short)i);
+        }
+        return null;
     }
 
     public static boolean isInvoke(Instruction ins) {
