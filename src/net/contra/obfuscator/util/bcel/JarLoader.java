@@ -56,8 +56,7 @@ public class JarLoader {
                 String[] man = new String(bite).split("\\r?\\n");
                 for (String s : man) {
                     if (s.startsWith("Main-Class:")) {
-                        //TODO: This should probably be changed, man[0] isn't always manifest-version
-                        return man[0] + "\n" + s + "\n";
+                        return s + "\n";
                     }
                 }
             }
