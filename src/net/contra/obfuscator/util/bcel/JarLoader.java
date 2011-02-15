@@ -48,6 +48,23 @@ public class JarLoader {
         }
     }
 
+    public String getMainClass() {
+        for (String n : NonClassEntries.keySet()) {
+            JarEntry destEntry = new JarEntry(n);
+            byte[] bite = NonClassEntries.get(n);
+            if (destEntry.getName().equals("META-INF/MANIFEST.MF")) {
+                String[] man = new String(bite).split("\\r?\\n");
+                for (String s : man) {
+                    if (s.startsWith("Main-Class:")) {
+                        //TODO: This should probably be changed, man[0] isn't always manifest-version
+                        return man[0] + "\n" + s + "\n";
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
     public void Save(String fileName) {
         try {
             FileOutputStream os = new FileOutputStream(fileName);
@@ -61,6 +78,14 @@ public class JarLoader {
             for (String n : NonClassEntries.keySet()) {
                 JarEntry destEntry = new JarEntry(n);
                 byte[] bite = NonClassEntries.get(n);
+                //Well we don't want anything besides the main-class in the manifest...
+                if (destEntry.getName().equals("META-INF/MANIFEST.MF")) {
+                    String newManifest = getMainClass();
+                    if (newManifest != null) {
+                        destEntry = new JarEntry(destEntry.getName());
+                        bite = newManifest.getBytes();
+                    }
+                }
                 jos.putNextEntry(destEntry);
                 jos.write(bite);
                 jos.closeEntry();

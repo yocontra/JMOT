@@ -80,7 +80,7 @@ public class BCELMethods {
         return false;
     }
 
-   public static int getIntegerValue(Instruction ins) {
+    public static int getIntegerValue(Instruction ins) {
         if (ins instanceof ICONST) {
             return ((ICONST) ins).getValue().intValue();
         } else if (ins instanceof BIPUSH) {
@@ -90,13 +90,14 @@ public class BCELMethods {
         }
         return -9001;
     }
+
     public static Instruction getIntegerLoad(Instruction ins, int i) {
         if (ins instanceof ICONST) {
             return new ICONST(i);
         } else if (ins instanceof BIPUSH) {
-            return new BIPUSH((byte)i);
+            return new BIPUSH((byte) i);
         } else if (ins instanceof SIPUSH) {
-            return new SIPUSH((short)i);
+            return new SIPUSH((short) i);
         }
         return null;
     }
