@@ -9,6 +9,7 @@ public class Application {
     public static void main(String[] args) {
         Logger.Log(String.format("JMOT v%s by Contra", Settings.Version));
         Logger.Log("Visit RECoders.org for Info");
+        Logger.Log("Please read LICENSE.txt for licensing information.");
         if (args.length < 2) {
             Logger.Error("Please provide at least two arguments!");
             return;
@@ -19,7 +20,29 @@ public class Application {
         try {
             String cmd = args[1];
             ITransformer obber;
-            if (cmd.equalsIgnoreCase("string")) {
+            if (cmd.equalsIgnoreCase("all")) {
+                obber = new StringObfuscator(args[0]);
+                obber.Load();
+                obber.Transform();
+                obber = new AttributeObfuscator(obber.Dump());
+                Settings.FileTag = "";
+                obber.Load();
+                obber.Transform();
+                obber = new MethodNameObfuscator(obber.Dump());
+                obber.Load();
+                obber.Transform();
+                obber = new FieldNameObfuscator(obber.Dump());
+                obber.Load();
+                obber.Transform();
+                obber = new IntegerComplicator(obber.Dump());
+                obber.Load();
+                obber.Transform();
+                obber = new IntegerBoxer(obber.Dump());
+                obber.Load();
+                obber.Transform();
+                obber.Dump();
+                return;
+            } else if (cmd.equalsIgnoreCase("string")) {
                 obber = new StringObfuscator(args[0]);
             } else if (cmd.equalsIgnoreCase("attribute")) {
                 obber = new AttributeObfuscator(args[0]);

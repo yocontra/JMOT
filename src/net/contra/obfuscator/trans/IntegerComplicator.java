@@ -83,8 +83,10 @@ public class IntegerComplicator implements ITransformer {
         }
     }
 
-    public void Dump() {
-        LoadedJar.Save(Location.replace(".jar", Settings.FileTag + ".jar"));
+    public String Dump() {
+        String loc = Location.replace(".jar", Settings.FileTag + ".jar");
+        LoadedJar.Save(loc);
+        return loc;
     }
 }
 

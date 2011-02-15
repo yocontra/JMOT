@@ -10,5 +10,5 @@ public interface ITransformer {
 
     void Transform();
 
-    void Dump();
+    String Dump();
 }
