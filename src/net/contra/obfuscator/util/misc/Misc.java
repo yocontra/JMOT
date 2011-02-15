@@ -43,7 +43,7 @@ public class Misc {
 
     private static String getRandomString(int length, boolean simple) {
         if (!simple) {
-            Random rand = new Random(System.currentTimeMillis());
+            Random rand = new Random();
             StringBuffer sb = new StringBuffer();
             for (int i = 0; i < length; i++) {
                 sb.append(new char[rand.nextInt(255)]);
@@ -51,12 +51,12 @@ public class Misc {
             return sb.toString();
         } else {
             String charset = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm1234567890$_";
-            Random rand = new Random(System.currentTimeMillis());
+            Random rand = new Random();
             StringBuffer sb = new StringBuffer();
             for (int i = 0; i < length; i++) {
                 sb.append(charset.charAt(rand.nextInt(charset.length())));
             }
-            return "c" + sb.toString();
+            return "c" + sb.toString() + rand.nextInt(20);
         }
     }
 }
