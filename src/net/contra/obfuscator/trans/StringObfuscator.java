@@ -77,10 +77,8 @@ public class StringObfuscator implements ITransformer {
     MethodGen getDecryptor(ClassGen cg, int i) {
         InstructionList il = new InstructionList();
         InstructionFactory fa = new InstructionFactory(cg);
-        String toChar = "()[C";
-        String toStr = "([C)V";
         il.append(new ALOAD(0));
-        il.append(fa.createInvoke("java.lang.String", "toCharArray", Type.getReturnType(toChar), Type.getArgumentTypes(toChar), Constants.INVOKEVIRTUAL));
+        il.append(fa.createInvoke("java.lang.String", "toCharArray", new ArrayType(Type.CHAR, 1), Type.NO_ARGS, Constants.INVOKEVIRTUAL));
         il.append(new ASTORE(2));
         il.append(new ICONST(0));
         il.append(new ISTORE(3));
@@ -102,7 +100,7 @@ public class StringObfuscator implements ITransformer {
         il.append(fa.createNew(ObjectType.STRING));
         il.append(new DUP());
         il.append(new ALOAD(2));
-        il.append(fa.createInvoke("java.lang.String", "<init>", Type.getReturnType(toStr), Type.getArgumentTypes(toStr), Constants.INVOKESPECIAL));
+        il.append(fa.createInvoke("java.lang.String", "<init>", Type.VOID, new Type[]{new ArrayType(Type.CHAR, 1)}, Constants.INVOKESPECIAL));
         il.append(new ARETURN());
         il.getInstructionHandles()[8].setInstruction(new IF_ICMPGE(il.getInstructionHandles()[20]));
         il.setPositions();
