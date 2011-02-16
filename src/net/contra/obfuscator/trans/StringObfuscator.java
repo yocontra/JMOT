@@ -41,7 +41,6 @@ public class StringObfuscator implements ITransformer {
                                 list.append(handle, new INVOKESTATIC(cg.getConstantPool().addMethodref(cryptor)));
                             } catch (Exception e) {
                                 Logger.Debug("Caught error, skipping instruction.");
-                                continue;
                             }
                         }
                     }

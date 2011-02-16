@@ -48,16 +48,22 @@ public class JarLoader {
         }
     }
 
-    public String getMainClass() {
+    public String fixManifest() {
         for (String n : NonClassEntries.keySet()) {
             JarEntry destEntry = new JarEntry(n);
             byte[] bite = NonClassEntries.get(n);
-            if (destEntry.getName().equals("META-INF/MANIFEST.MF")) {
-                String[] man = new String(bite).split("\\r?\\n");
-                for (String s : man) {
-                    if (s.startsWith("Main-Class:")) {
-                        return s + "\n";
+            if (destEntry.getName().startsWith("META-INF/")) {
+                if (destEntry.getName().endsWith("MANIFEST.MF")) {
+                    String[] man = new String(bite).split("\\r?\\n");
+                    for (String s : man) {
+                        if (s.startsWith("Main-Class:")) {
+                            //NonClassEntries.remove(n);
+                            NonClassEntries.put(n, new String(s + "\n").getBytes());
+                        }
                     }
+                } else {
+                    //NonClassEntries.remove(n);
+                    NonClassEntries.put(n, null);
                 }
             }
         }
@@ -65,6 +71,7 @@ public class JarLoader {
     }
 
     public void Save(String fileName) {
+        fixManifest();
         try {
             FileOutputStream os = new FileOutputStream(fileName);
             JarOutputStream jos = new JarOutputStream(os);
@@ -77,17 +84,11 @@ public class JarLoader {
             for (String n : NonClassEntries.keySet()) {
                 JarEntry destEntry = new JarEntry(n);
                 byte[] bite = NonClassEntries.get(n);
-                //Well we don't want anything besides the main-class in the manifest...
-                if (destEntry.getName().equals("META-INF/MANIFEST.MF")) {
-                    String newManifest = getMainClass();
-                    if (newManifest != null) {
-                        destEntry = new JarEntry(destEntry.getName());
-                        bite = newManifest.getBytes();
-                    }
+                if(bite != null){
+                    jos.putNextEntry(destEntry);
+                    jos.write(bite);
+                    jos.closeEntry();
                 }
-                jos.putNextEntry(destEntry);
-                jos.write(bite);
-                jos.closeEntry();
             }
             jos.closeEntry();
             jos.close();

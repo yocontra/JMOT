@@ -21,6 +21,7 @@ public class Application {
             String cmd = args[1];
             ITransformer obber;
             if (cmd.equalsIgnoreCase("all")) {
+                //TODO: UNGHETTO THIS SHIT NIGGA
                 obber = new StringObfuscator(args[0]);
                 obber.Load();
                 obber.Transform();
