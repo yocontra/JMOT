@@ -58,7 +58,7 @@ public class JarLoader {
                     for (String s : man) {
                         if (s.startsWith("Main-Class:")) {
                             //NonClassEntries.remove(n);
-                            NonClassEntries.put(n, new String(s + "\n").replace("/", "").getBytes());
+                            NonClassEntries.put(n, new String(s + "\n").replace("/", ".").getBytes());
                         }
                     }
                 } else {
@@ -84,7 +84,7 @@ public class JarLoader {
             for (String n : NonClassEntries.keySet()) {
                 JarEntry destEntry = new JarEntry(n);
                 byte[] bite = NonClassEntries.get(n);
-                if(bite != null){
+                if (bite != null) {
                     jos.putNextEntry(destEntry);
                     jos.write(bite);
                     jos.closeEntry();

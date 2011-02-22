@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f39d018b-4f71-41ca-b72b-a966c93b7756" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/contra/obfuscator/util/bcel/JarLoader.java" afterPath="$PROJECT_DIR$/src/net/contra/obfuscator/util/bcel/JarLoader.java" />
     </list>
     <ignored path="ContraObfuscator.iws" />
@@ -91,7 +90,7 @@
       <file leaf-file-name="Application.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/Application.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="28" selection-start="1151" selection-end="1151" vertical-scroll-proportion="0.0">
+            <state line="23" column="71" selection-start="939" selection-end="939" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -118,7 +117,7 @@
       <file leaf-file-name="JarLoader.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/util/bcel/JarLoader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="60" column="88" selection-start="2455" selection-end="2455" vertical-scroll-proportion="0.35126582">
+            <state line="60" column="87" selection-start="2454" selection-end="2454" vertical-scroll-proportion="0.35126582">
               <folding />
             </state>
           </provider>
@@ -472,7 +471,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-4" y="-4" width="1288" height="764" extended-state="7" />
+    <frame x="-4" y="-4" width="1288" height="764" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -576,11 +575,6 @@
         <state line="88" column="34" selection-start="4573" selection-end="4573" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="28" selection-start="1151" selection-end="1151" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/trans/AttributeObfuscator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="33" column="97" selection-start="1287" selection-end="1287" vertical-scroll-proportion="0.0" />
@@ -613,9 +607,16 @@
         <state line="84" column="4" selection-start="4322" selection-end="4473" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="71" selection-start="939" selection-end="939" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/util/bcel/JarLoader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="88" selection-start="2455" selection-end="2455" vertical-scroll-proportion="0.35126582">
+        <state line="60" column="87" selection-start="2454" selection-end="2454" vertical-scroll-proportion="0.35126582">
           <folding />
         </state>
       </provider>
