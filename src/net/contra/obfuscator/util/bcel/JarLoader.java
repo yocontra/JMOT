@@ -58,7 +58,7 @@ public class JarLoader {
                     for (String s : man) {
                         if (s.startsWith("Main-Class:")) {
                             //NonClassEntries.remove(n);
-                            NonClassEntries.put(n, new String(s + "\n").getBytes());
+                            NonClassEntries.put(n, new String(s + "\n").replace("/", "").getBytes());
                         }
                     }
                 } else {
