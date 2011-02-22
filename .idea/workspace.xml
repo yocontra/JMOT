@@ -4,9 +4,7 @@
     <option name="SPLITTER_PROPORTION" value="0.5546147" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f39d018b-4f71-41ca-b72b-a966c93b7756" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/contra/obfuscator/util/bcel/JarLoader.java" afterPath="$PROJECT_DIR$/src/net/contra/obfuscator/util/bcel/JarLoader.java" />
-    </list>
+    <list default="true" id="f39d018b-4f71-41ca-b72b-a966c93b7756" name="Default" comment="" />
     <ignored path="ContraObfuscator.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
