@@ -23,25 +23,25 @@ public class Application {
             if (cmd.equalsIgnoreCase("all")) {
                 //TODO: UNGHETTO THIS SHIT NIGGA
                 obber = new StringObfuscator(args[0]);
-                obber.Load();
-                obber.Transform();
-                obber = new AttributeObfuscator(obber.Dump());
+                obber.load();
+                obber.transform();
+                obber = new AttributeObfuscator(obber.save());
                 Settings.FileTag = "";
-                obber.Load();
-                obber.Transform();
-                obber = new MethodNameObfuscator(obber.Dump());
-                obber.Load();
-                obber.Transform();
-                obber = new FieldNameObfuscator(obber.Dump());
-                obber.Load();
-                obber.Transform();
-                obber = new IntegerComplicator(obber.Dump());
-                obber.Load();
-                obber.Transform();
-                obber = new IntegerBoxer(obber.Dump());
-                obber.Load();
-                obber.Transform();
-                obber.Dump();
+                obber.load();
+                obber.transform();
+                obber = new MethodNameObfuscator(obber.save());
+                obber.load();
+                obber.transform();
+                obber = new FieldNameObfuscator(obber.save());
+                obber.load();
+                obber.transform();
+                obber = new IntegerComplicator(obber.save());
+                obber.load();
+                obber.transform();
+                obber = new IntegerBoxer(obber.save());
+                obber.load();
+                obber.transform();
+                obber.save();
                 return;
             } else if (cmd.equalsIgnoreCase("string")) {
                 obber = new StringObfuscator(args[0]);
@@ -61,12 +61,12 @@ public class Application {
                 Logger.Error("Please provide a proper transformer identifier!");
                 return;
             }
-            obber.Logger.Log("Loading JarFile. Target: " + args[0]);
-            obber.Load();
-            obber.Logger.Log("Transforming Classes");
-            obber.Transform();
-            obber.Logger.Log("Saving JarFile");
-            obber.Dump();
+            obber.logger.Log("Loading JarFile. Target: " + args[0]);
+            obber.load();
+            obber.logger.Log("Transforming Classes");
+            obber.transform();
+            obber.logger.Log("Saving JarFile");
+            obber.save();
         } catch (Exception e) {
             Logger.Error("Error Completing Obfuscation!");
             e.printStackTrace();

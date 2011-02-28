@@ -22,12 +22,12 @@ public class ClassNameObfuscator implements ITransformer {
         Location = loc;
     }
 
-    public void Load() {
+    public void load() {
         LoadedJar = new JarLoader(Location);
     }
 
     //TODO: NEW, FIELDS, NEWARRAY, EXCLUSIONS, NOT MAIN
-    public void Transform() {
+    public void transform() {
         //We rename methods
         for (ClassGen cg : LoadedJar.ClassEntries.values()) {
             if (cg.isAbstract()) continue; //TODO: Probably more shit we shouldn't rename
@@ -93,9 +93,9 @@ public class ClassNameObfuscator implements ITransformer {
         }
     }
 
-    public String Dump() {
+    public String save() {
         String loc = Location.replace(".jar", Settings.FileTag + ".jar");
-        LoadedJar.Save(loc);
+        LoadedJar.saveJar(loc);
         return loc;
     }
 }

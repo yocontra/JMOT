@@ -48,17 +48,18 @@ public class JarLoader {
         }
     }
 
-    public String fixManifest() {
+    public String wipeManifest() {
         for (String n : NonClassEntries.keySet()) {
-            JarEntry destEntry = new JarEntry(n);
             byte[] bite = NonClassEntries.get(n);
-            if (destEntry.getName().startsWith("META-INF/")) {
-                if (destEntry.getName().endsWith("MANIFEST.MF")) {
+            if (n.startsWith("META-INF/")) {
+                if (n.endsWith("MANIFEST.MF")) {
                     String[] man = new String(bite).split("\\r?\\n");
                     for (String s : man) {
                         if (s.startsWith("Main-Class:")) {
                             //NonClassEntries.remove(n);
-                            NonClassEntries.put(n, new String(s + "\n").replace("/", ".").getBytes());
+                            String t = new String(s + "\r\n");
+                            t = t.replace("/", ".");
+                            NonClassEntries.put(n, t.getBytes());
                         }
                     }
                 } else {
@@ -70,8 +71,8 @@ public class JarLoader {
         return null;
     }
 
-    public void Save(String fileName) {
-        fixManifest();
+    public void saveJar(String fileName) {
+        wipeManifest();
         try {
             FileOutputStream os = new FileOutputStream(fileName);
             JarOutputStream jos = new JarOutputStream(os);

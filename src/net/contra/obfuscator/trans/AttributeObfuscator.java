@@ -21,11 +21,11 @@ public class AttributeObfuscator implements ITransformer {
         Location = loc;
     }
 
-    public void Load() {
+    public void load() {
         LoadedJar = new JarLoader(Location);
     }
 
-    public void Transform() {
+    public void transform() {
         for (ClassGen cg : LoadedJar.ClassEntries.values()) {
             for (Method method : cg.getMethods()) {
                 MethodGen mg = new MethodGen(method, cg.getClassName(), cg.getConstantPool());
@@ -47,9 +47,9 @@ public class AttributeObfuscator implements ITransformer {
         }
     }
 
-    public String Dump() {
+    public String save() {
         String loc = Location.replace(".jar", Settings.FileTag + ".jar");
-        LoadedJar.Save(loc);
+        LoadedJar.saveJar(loc);
         return loc;
     }
 }

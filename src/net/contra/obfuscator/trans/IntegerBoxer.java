@@ -20,11 +20,11 @@ public class IntegerBoxer implements ITransformer {
         Location = loc;
     }
 
-    public void Load() {
+    public void load() {
         LoadedJar = new JarLoader(Location);
     }
 
-    public void Transform() {
+    public void transform() {
         for (ClassGen cg : LoadedJar.ClassEntries.values()) {
             MethodGen boxer = getBoxer(cg);
             INVOKESTATIC inv = new INVOKESTATIC(cg.getConstantPool().addMethodref(boxer));
@@ -90,9 +90,9 @@ public class IntegerBoxer implements ITransformer {
         return method;
     }
 
-    public String Dump() {
+    public String save() {
         String loc = Location.replace(".jar", Settings.FileTag + ".jar");
-        LoadedJar.Save(loc);
+        LoadedJar.saveJar(loc);
         return loc;
     }
 }

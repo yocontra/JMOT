@@ -26,11 +26,11 @@ public class FieldNameObfuscator implements ITransformer {
         Location = loc;
     }
 
-    public void Load() {
+    public void load() {
         LoadedJar = new JarLoader(Location);
     }
 
-    public void Transform() {
+    public void transform() {
         //We rename methods
         for (ClassGen cg : LoadedJar.ClassEntries.values()) {
             ArrayList<RenamedPair> NewFields = new ArrayList<RenamedPair>();
@@ -80,9 +80,9 @@ public class FieldNameObfuscator implements ITransformer {
         }
     }
 
-    public String Dump() {
+    public String save() {
         String loc = Location.replace(".jar", Settings.FileTag + ".jar");
-        LoadedJar.Save(loc);
+        LoadedJar.saveJar(loc);
         return loc;
     }
 }

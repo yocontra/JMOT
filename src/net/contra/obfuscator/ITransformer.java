@@ -4,11 +4,11 @@ import net.contra.obfuscator.util.misc.LogHandler;
 
 public interface ITransformer {
 
-    public LogHandler Logger = new LogHandler("Transformer");
+    public LogHandler logger = new LogHandler("Transformer");
 
-    void Load();
+    void load();
 
-    void Transform();
+    void transform();
 
-    String Dump();
+    String save();
 }

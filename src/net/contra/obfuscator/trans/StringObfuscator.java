@@ -18,11 +18,11 @@ public class StringObfuscator implements ITransformer {
         Location = loc;
     }
 
-    public void Load() {
+    public void load() {
         LoadedJar = new JarLoader(Location);
     }
 
-    public void Transform() {
+    public void transform() {
         for (int i = 0; i < Settings.CipherKeys.length; i++) {
             for (ClassGen cg : LoadedJar.ClassEntries.values()) {
                 MethodGen cryptor = getDecryptor(cg, i);
@@ -60,9 +60,9 @@ public class StringObfuscator implements ITransformer {
         }
     }
 
-    public String Dump() {
+    public String save() {
         String loc = Location.replace(".jar", Settings.FileTag + ".jar");
-        LoadedJar.Save(loc);
+        LoadedJar.saveJar(loc);
         return loc;
     }
 
