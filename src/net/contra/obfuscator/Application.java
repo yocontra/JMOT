@@ -21,7 +21,7 @@ public class Application {
             String cmd = args[1];
             ITransformer obber;
             if (cmd.equalsIgnoreCase("all")) {
-                //TODO: UNGHETTO THIS SHIT NIGGA
+                //TODO: UNGHETTO THIS, THIS IS AWFUL
                 obber = new StringObfuscator(args[0]);
                 obber.load();
                 obber.transform();
@@ -90,7 +90,7 @@ public class Application {
                 Settings.Iterations = 3;
                 break;
             case Insane:
-                Settings.CipherKeys = new int[]{1, 2, 3, 4, 5, 89, 85, 127};
+                Settings.CipherKeys = new int[]{11, 22, 33, 44, 55, 66, 77, 88};
                 Settings.Iterations = 15;
                 break;
             default:

@@ -7,15 +7,7 @@
     <list default="true" id="f39d018b-4f71-41ca-b72b-a966c93b7756" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/contra/obfuscator/Application.java" afterPath="$PROJECT_DIR$/src/net/contra/obfuscator/Application.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/contra/obfuscator/ITransformer.java" afterPath="$PROJECT_DIR$/src/net/contra/obfuscator/ITransformer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/contra/obfuscator/trans/AttributeObfuscator.java" afterPath="$PROJECT_DIR$/src/net/contra/obfuscator/trans/AttributeObfuscator.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/contra/obfuscator/trans/ClassNameObfuscator.java" afterPath="$PROJECT_DIR$/src/net/contra/obfuscator/trans/ClassNameObfuscator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/contra/obfuscator/trans/FieldNameObfuscator.java" afterPath="$PROJECT_DIR$/src/net/contra/obfuscator/trans/FieldNameObfuscator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/contra/obfuscator/trans/IntegerBoxer.java" afterPath="$PROJECT_DIR$/src/net/contra/obfuscator/trans/IntegerBoxer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/contra/obfuscator/trans/IntegerComplicator.java" afterPath="$PROJECT_DIR$/src/net/contra/obfuscator/trans/IntegerComplicator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/contra/obfuscator/trans/MethodNameObfuscator.java" afterPath="$PROJECT_DIR$/src/net/contra/obfuscator/trans/MethodNameObfuscator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/contra/obfuscator/trans/StringObfuscator.java" afterPath="$PROJECT_DIR$/src/net/contra/obfuscator/trans/StringObfuscator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/contra/obfuscator/util/bcel/JarLoader.java" afterPath="$PROJECT_DIR$/src/net/contra/obfuscator/util/bcel/JarLoader.java" />
     </list>
     <ignored path="ContraObfuscator.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -91,16 +83,7 @@
       <file leaf-file-name="Application.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/Application.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="19" selection-start="589" selection-end="589" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ITransformer.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/ITransformer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="22" selection-start="239" selection-end="239" vertical-scroll-proportion="0.38563326">
+            <state line="92" column="78" selection-start="3838" selection-end="3838" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -109,16 +92,16 @@
       <file leaf-file-name="AttributeObfuscator.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/trans/AttributeObfuscator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="5" selection-start="848" selection-end="848" vertical-scroll-proportion="0.0">
+            <state line="33" column="50" selection-start="1287" selection-end="1287" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClassNameObfuscator.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="ClassNameObfuscator.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/trans/ClassNameObfuscator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="6" selection-start="926" selection-end="926" vertical-scroll-proportion="0.0">
+            <state line="42" column="33" selection-start="1800" selection-end="1800" vertical-scroll-proportion="0.53125">
               <folding />
             </state>
           </provider>
@@ -127,7 +110,7 @@
       <file leaf-file-name="JarLoader.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/util/bcel/JarLoader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="73" column="39" selection-start="2745" selection-end="2745" vertical-scroll-proportion="0.0">
+            <state line="62" column="20" selection-start="2484" selection-end="2484" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -154,7 +137,7 @@
       <file leaf-file-name="StringObfuscator.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/trans/StringObfuscator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="64" column="25" selection-start="3007" selection-end="3007" vertical-scroll-proportion="0.0">
+            <state line="22" column="60" selection-start="729" selection-end="729" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -194,11 +177,11 @@
         <option value="$PROJECT_DIR$/src/net/contra/obfuscator/trans/MethodNameObfuscator.java" />
         <option value="$PROJECT_DIR$/src/net/contra/obfuscator/trans/StringObfuscator.java" />
         <option value="$PROJECT_DIR$/src/net/contra/obfuscator/trans/IntegerComplicator.java" />
-        <option value="$PROJECT_DIR$/src/net/contra/obfuscator/trans/ClassNameObfuscator.java" />
         <option value="$PROJECT_DIR$/src/net/contra/obfuscator/trans/IntegerBoxer.java" />
         <option value="$PROJECT_DIR$/src/net/contra/obfuscator/trans/AttributeObfuscator.java" />
-        <option value="$PROJECT_DIR$/src/net/contra/obfuscator/Application.java" />
         <option value="$PROJECT_DIR$/src/net/contra/obfuscator/ITransformer.java" />
+        <option value="$PROJECT_DIR$/src/net/contra/obfuscator/Application.java" />
+        <option value="$PROJECT_DIR$/src/net/contra/obfuscator/trans/ClassNameObfuscator.java" />
       </list>
     </option>
   </component>
@@ -238,7 +221,8 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Favorites" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -291,23 +275,22 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
+      <pane id="Favorites" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
-    <property name="recentsLimit" value="5" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="MemberChooser.sorted" value="false" />
+    <property name="recentsLimit" value="5" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../ObfTestProject/ObfTestProject" />
     <property name="MemberChooser.showClasses" value="true" />
-    <property name="project.structure.side.proportion" value="0.2" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="dynamic.classpath" value="false" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -338,6 +321,24 @@
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -363,24 +364,6 @@
       <envs />
       <properties />
       <listeners />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method>
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
@@ -513,7 +496,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-4" y="-4" width="1688" height="1014" extended-state="6" />
+    <frame x="-4" y="-4" width="1288" height="764" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -521,12 +504,11 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24979724" sideWeight="0.65434086" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39871383" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33104238" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34249714" sideWeight="0.99757284" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34189406" sideWeight="0.99757284" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="top" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3283082" sideWeight="0.65112543" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3998378" sideWeight="0.6784566" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34963325" sideWeight="0.6575029" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39967638" sideWeight="0.6581059" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.355178" sideWeight="0.6581059" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329582" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34170854" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Regex" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -536,6 +518,7 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3279743" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Analyze Dataflow to" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Analyze Dataflow from" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329582" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33104238" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28440368" sideWeight="0.75505203" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -607,72 +590,64 @@
         <state line="52" column="28" selection-start="1544" selection-end="1544" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/util/bcel/JarLoader.java">
+    <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/trans/IntegerBoxer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="39" selection-start="2745" selection-end="2745" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="94" column="25" selection-start="4730" selection-end="4730" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/trans/FieldNameObfuscator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="18" selection-start="4117" selection-end="4124" vertical-scroll-proportion="0.0">
+        <state line="84" column="18" selection-start="4117" selection-end="4124" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/trans/IntegerComplicator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="87" column="25" selection-start="4402" selection-end="4402" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/ITransformer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="39" selection-start="156" selection-end="156" vertical-scroll-proportion="0.2939481">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/trans/MethodNameObfuscator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="86" column="25" selection-start="4444" selection-end="4444" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="86" column="25" selection-start="4444" selection-end="4444" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/trans/StringObfuscator.java">
+    <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/util/bcel/JarLoader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="25" selection-start="3007" selection-end="3007" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/trans/IntegerComplicator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="87" column="25" selection-start="4402" selection-end="4402" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/trans/IntegerBoxer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="94" column="25" selection-start="4730" selection-end="4730" vertical-scroll-proportion="0.0">
+        <state line="62" column="20" selection-start="2484" selection-end="2484" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/trans/AttributeObfuscator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="5" selection-start="848" selection-end="848" vertical-scroll-proportion="0.0">
+        <state line="33" column="50" selection-start="1287" selection-end="1287" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/trans/ClassNameObfuscator.java">
+    <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/trans/StringObfuscator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="6" selection-start="926" selection-end="926" vertical-scroll-proportion="0.0">
+        <state line="22" column="60" selection-start="729" selection-end="729" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/Application.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="19" selection-start="589" selection-end="589" vertical-scroll-proportion="0.0">
+        <state line="92" column="78" selection-start="3838" selection-end="3838" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/ITransformer.java">
+    <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/trans/ClassNameObfuscator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="22" selection-start="239" selection-end="239" vertical-scroll-proportion="0.38563326">
+        <state line="42" column="33" selection-start="1800" selection-end="1800" vertical-scroll-proportion="0.53125">
           <folding />
         </state>
       </provider>

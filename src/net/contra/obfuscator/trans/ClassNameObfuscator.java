@@ -36,7 +36,7 @@ public class ClassNameObfuscator implements ITransformer {
             if (manifest != null) {
                 String man = new String(manifest);
                 if (man.contains("Main-Class: " + cg.getClassName())) {
-                    Logger.Debug("Updating Manifest -> Class: " + cg.getClassName());
+                    Logger.Debug("Updating Manifest -> Main Class: " + cg.getClassName());
                     man = man.replace("Main-Class: " + cg.getClassName(), "Main-Class: " + newName);
                     LoadedJar.NonClassEntries.put("META-INF/MANIFEST.MF", man.getBytes());
                 }
