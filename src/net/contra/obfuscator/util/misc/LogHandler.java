@@ -14,7 +14,7 @@ public class LogHandler {
     }
 
     public void Debug(String msg) {
-        if (Settings.Debug) {
+        if (Settings.DEBUG) {
             System.out.println("[" + Name + "]" + "[DEBUG]" + msg);
         }
     }

@@ -1,4 +1,4 @@
-package net.contra.obfuscator.trans;
+package net.contra.obfuscator.trans.ob;
 
 import com.sun.org.apache.bcel.internal.classfile.Method;
 import com.sun.org.apache.bcel.internal.generic.ClassGen;
@@ -83,7 +83,7 @@ public class MethodNameObfuscator implements ITransformer {
     }
 
     public String save() {
-        String loc = Location.replace(".jar", Settings.FileTag + ".jar");
+        String loc = Location.replace(".jar", Settings.FILE_TAG + ".jar");
         LoadedJar.saveJar(loc);
         return loc;
     }

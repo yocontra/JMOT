@@ -1,4 +1,4 @@
-package net.contra.obfuscator.trans;
+package net.contra.obfuscator.trans.ob;
 
 import com.sun.org.apache.bcel.internal.Constants;
 import com.sun.org.apache.bcel.internal.classfile.Method;
@@ -23,7 +23,7 @@ public class StringObfuscator implements ITransformer {
     }
 
     public void transform() {
-        for (int i = 0; i < Settings.CipherKeys.length; i++) {
+        for (int i = 0; i < Settings.CIPHER_KEYS.length; i++) {
             for (ClassGen cg : LoadedJar.ClassEntries.values()) {
                 MethodGen cryptor = getDecryptor(cg, i);
                 for (Method method : cg.getMethods()) {
@@ -36,7 +36,7 @@ public class StringObfuscator implements ITransformer {
                         if (handle.getInstruction() instanceof LDC) {
                             try {
                                 String orig = ((LDC) handle.getInstruction()).getValue(cg.getConstantPool()).toString();
-                                int index = cg.getConstantPool().addString(getCiphered(orig, Settings.CipherKeys[i]));
+                                int index = cg.getConstantPool().addString(getCiphered(orig, Settings.CIPHER_KEYS[i]));
                                 handle.setInstruction(new LDC(index));
                                 list.append(handle, new INVOKESTATIC(cg.getConstantPool().addMethodref(cryptor)));
                             } catch (Exception e) {
@@ -61,7 +61,7 @@ public class StringObfuscator implements ITransformer {
     }
 
     public String save() {
-        String loc = Location.replace(".jar", Settings.FileTag + ".jar");
+        String loc = Location.replace(".jar", Settings.FILE_TAG + ".jar");
         LoadedJar.saveJar(loc);
         return loc;
     }
@@ -91,7 +91,7 @@ public class StringObfuscator implements ITransformer {
         il.append(new ALOAD(2));
         il.append(new ILOAD(3));
         il.append(new CALOAD());
-        il.append(new BIPUSH((byte) Settings.CipherKeys[i]));
+        il.append(new BIPUSH((byte) Settings.CIPHER_KEYS[i]));
         il.append(new IXOR());
         il.append(new I2C());
         il.append(new CASTORE());
@@ -106,7 +106,7 @@ public class StringObfuscator implements ITransformer {
         il.setPositions();
 
         MethodGen mg = new MethodGen(Constants.ACC_STATIC | Constants.ACC_PUBLIC, Type.STRING, new Type[]{Type.STRING},
-                new String[]{Settings.CipherArg}, Settings.CipherName + i, cg.getClassName(), il, cg.getConstantPool());
+                new String[]{Settings.CIPHER_ARG}, Settings.CIPHER_NAME + i, cg.getClassName(), il, cg.getConstantPool());
         mg.setMaxLocals();
         mg.setMaxStack();
         return mg;

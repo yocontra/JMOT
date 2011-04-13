@@ -12,7 +12,7 @@ import java.util.Random;
  */
 public class Misc {
     public static String getRandomName() {
-        switch (Settings.ObfuscationLevel) {
+        switch (Settings.OBFUSCATION_LEVEL) {
             case Light:
                 return getRandomString(5, true);
             case Normal:
@@ -27,7 +27,7 @@ public class Misc {
     }
 
     public static String getRandomClassName() {
-        switch (Settings.ObfuscationLevel) {
+        switch (Settings.OBFUSCATION_LEVEL) {
             case Light:
                 return getRandomString(8, true);
             case Normal:

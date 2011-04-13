@@ -1,4 +1,4 @@
-package net.contra.obfuscator.trans;
+package net.contra.obfuscator.trans.ob;
 
 import com.sun.org.apache.bcel.internal.classfile.Method;
 import com.sun.org.apache.bcel.internal.generic.*;
@@ -34,7 +34,7 @@ public class IntegerComplicator implements ITransformer {
                 for (InstructionHandle handle : handles) {
                     if (handle.getPosition() >= handles.length - 1) continue;
 
-                    if (Settings.ObfuscationLevel.getLevel() < ObfuscationType.Normal.getLevel()) {
+                    if (Settings.OBFUSCATION_LEVEL.getLevel() < ObfuscationType.Normal.getLevel()) {
                         //If we have it on normal or light, we won't obfuscate boolean values :)
                         if (BCELMethods.isFieldInvoke(handle.getNext().getInstruction())) {
                             String sig = BCELMethods.getFieldInvokeSignature(handle.getNext().getInstruction(), cg.getConstantPool());
@@ -50,21 +50,21 @@ public class IntegerComplicator implements ITransformer {
                             || handle.getInstruction() instanceof ILOAD
                             || (handle.getInstruction() instanceof LDC && handle.getNext().getInstruction() instanceof IASTORE)) {
                         InstructionList nlist = new InstructionList();
-                        for (int i = 0; i < Settings.Iterations; i++) {
+                        for (int i = 0; i < Settings.ITERATIONS; i++) {
                             nlist.append(new ICONST(0));
                             nlist.append(new IADD());
-                            if (Settings.ObfuscationLevel.getLevel() > ObfuscationType.Normal.getLevel()) {
+                            if (Settings.OBFUSCATION_LEVEL.getLevel() > ObfuscationType.Normal.getLevel()) {
                                 nlist.append(new ICONST(1));
                                 nlist.append(new IMUL());
                                 nlist.append(new ICONST(1));
                                 nlist.append(new IMUL());
                             }
                         }
-                        if (Settings.ObfuscationLevel.getLevel() > ObfuscationType.Normal.getLevel()
+                        if (Settings.OBFUSCATION_LEVEL.getLevel() > ObfuscationType.Normal.getLevel()
                                 && handle.getPrev() != null) {
                             InstructionList prelist = new InstructionList();
                             prelist.append(new ICONST(0));
-                            for (int i = 0; i < Settings.Iterations; i++) {
+                            for (int i = 0; i < Settings.ITERATIONS; i++) {
                                 prelist.append(new ICONST(0));
                                 prelist.append(new IADD());
                             }
@@ -84,7 +84,7 @@ public class IntegerComplicator implements ITransformer {
     }
 
     public String save() {
-        String loc = Location.replace(".jar", Settings.FileTag + ".jar");
+        String loc = Location.replace(".jar", Settings.FILE_TAG + ".jar");
         LoadedJar.saveJar(loc);
         return loc;
     }

@@ -2,20 +2,20 @@ package net.contra.obfuscator;
 
 public class Settings {
     //Application Settings
-    public static final double Version = 0.15; //Don't Touch
-    public static final boolean Debug = true;
-    public static final ObfuscationType ObfuscationLevel = ObfuscationType.Normal;
-    public static String FileTag = "-new";
+    public static final double VERSION = 0.15; //Don't Touch
+    public static final boolean DEBUG = true;
+    public static final ObfuscationType OBFUSCATION_LEVEL = ObfuscationType.Insane;
+    public static String FILE_TAG = "-new";
 
     //Integer Boxer Settings
-    public static final String BoxerName = "box";
-    public static final String BoxerArg = "s";
+    public static final String BOXER_NAME = "box";
+    public static final String BOXER_ARG = "s";
 
     //String Obfuscation Settings
-    public static final String CipherName = "hax";
-    public static final String CipherArg = "s";
-    public static int[] CipherKeys = {}; //Don't Touch
+    public static final String CIPHER_NAME = "hax";
+    public static final String CIPHER_ARG = "s";
+    public static int[] CIPHER_KEYS = {}; //Don't Touch
 
     //Integer Complicator Settings
-    public static int Iterations = 0; //Don't Touch
+    public static int ITERATIONS = 0; //Don't Touch
 }

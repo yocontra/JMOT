@@ -1,4 +1,4 @@
-package net.contra.obfuscator.trans;
+package net.contra.obfuscator.trans.ob;
 
 import com.sun.org.apache.bcel.internal.Constants;
 import com.sun.org.apache.bcel.internal.classfile.Method;
@@ -45,7 +45,7 @@ public class IntegerBoxer implements ITransformer {
                         //If it is an even int, it gets replaced with half it's value and appends
                         //an int of the key
                         if (curValue != -9001 && (curValue % 2 == 0)
-                                && Settings.ObfuscationLevel.getLevel() > ObfuscationType.Normal.getLevel()) { //check if it's even.
+                                && Settings.OBFUSCATION_LEVEL.getLevel() > ObfuscationType.Normal.getLevel()) { //check if it's even.
                             int tempkey = curValue / 2;
                             Logger.Debug("Value: " + curValue + " Key: " + tempkey);
                             Instruction newIns = BCELMethods.getIntegerLoad(handle.getInstruction(), tempkey);
@@ -80,7 +80,7 @@ public class IntegerBoxer implements ITransformer {
     MethodGen getBoxer(ClassGen cg) {
         InstructionList il = new InstructionList();
         MethodGen method = new MethodGen(Constants.ACC_PUBLIC | Constants.ACC_STATIC, Type.INT, new Type[]{Type.INT, Type.INT},
-                new String[]{Settings.BoxerArg, Settings.BoxerArg + "i"}, Settings.BoxerName, cg.getClassName(), il, cg.getConstantPool());
+                new String[]{Settings.BOXER_ARG, Settings.BOXER_ARG + "i"}, Settings.BOXER_NAME, cg.getClassName(), il, cg.getConstantPool());
         il.append(InstructionFactory.createLoad(Type.INT, 0));
         il.append(InstructionFactory.createLoad(Type.INT, 1));
         il.append(new IADD());
@@ -91,7 +91,7 @@ public class IntegerBoxer implements ITransformer {
     }
 
     public String save() {
-        String loc = Location.replace(".jar", Settings.FileTag + ".jar");
+        String loc = Location.replace(".jar", Settings.FILE_TAG + ".jar");
         LoadedJar.saveJar(loc);
         return loc;
     }
