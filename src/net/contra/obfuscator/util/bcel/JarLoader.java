@@ -25,21 +25,18 @@ public class JarLoader {
             File file = new File(fileLocation);
             JarFile jarFile = new JarFile(file);
             Enumeration<JarEntry> entries = jarFile.entries();
-
+            wipeManifest(jarFile.getManifest().getMainAttributes().getValue("Main-Class"));
             while (entries.hasMoreElements()) {
                 JarEntry entry = entries.nextElement();
                 if (entry == null) {
                     continue;
                 }
                 InputStream entryStream = jarFile.getInputStream(entry);
-
                 if (entry.getName().endsWith(".class")) {
                     JavaClass jc = new ClassParser(entryStream, entry.getName()).parse();
-                    ClassGen cg = new ClassGen(jc);
-                    ClassEntries.put(cg.getClassName(), cg);
+                    ClassEntries.put(jc.getClassName(), new ClassGen(jc));
                 } else {
-                    byte[] contents = IO.GetBytes(entryStream);
-                    NonClassEntries.put(entry.getName(), contents);
+                    NonClassEntries.put(entry.getName(), IO.GetBytes(entryStream));
                 }
             }
         } catch (Exception e) {
@@ -48,31 +45,21 @@ public class JarLoader {
         }
     }
 
-    public String wipeManifest() {
+    private void wipeManifest(String main) {
         for (String n : NonClassEntries.keySet()) {
             byte[] bite = NonClassEntries.get(n);
             if (n.startsWith("META-INF/")) {
                 if (n.endsWith("MANIFEST.MF")) {
-                    String[] man = new String(bite).split("\\r?\\n");
-                    for (String s : man) {
-                        if (s.startsWith("Main-Class:")) {
-                            //NonClassEntries.remove(n);
-                            String t = new String(s + "\r\n");
-                            t = t.replace("/", ".");
-                            NonClassEntries.put(n, t.getBytes());
-                        }
-                    }
-                } else {
-                    //NonClassEntries.remove(n);
-                    NonClassEntries.put(n, null);
+                    String nm = "Main-Class: " + main;
+                    NonClassEntries.put(n, nm.getBytes());
                 }
+            } else {
+                NonClassEntries.put(n, null);
             }
         }
-        return null;
     }
 
     public void saveJar(String fileName) {
-        wipeManifest();
         try {
             FileOutputStream os = new FileOutputStream(fileName);
             JarOutputStream jos = new JarOutputStream(os);
