@@ -60,10 +60,10 @@ public class StringObfuscator implements ITransformer {
         }
     }
 
-    public String save() {
+    public void save() {
         String loc = Location.replace(".jar", Settings.FILE_TAG + ".jar");
         LoadedJar.saveJar(loc);
-        return loc;
+
     }
 
     String getCiphered(String input, int key) {

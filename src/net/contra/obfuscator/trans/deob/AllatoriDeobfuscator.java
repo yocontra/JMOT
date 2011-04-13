@@ -84,7 +84,7 @@ public class AllatoriDeobfuscator implements ITransformer {
         if (hashClass == null) {
             Logger.error("Could not locate Allatori cipher class.");
             Logger.error("This is not obfuscated with Allatori.");
-            Application.Close();
+            Application.close();
         } else {
             Logger.debug("Allatori Class ID: " + hashClass.getClassName());
         }
@@ -133,9 +133,9 @@ public class AllatoriDeobfuscator implements ITransformer {
         }
     }
 
-    public String save() {
+    public void save() {
         String loc = Location.replace(".jar", Settings.FILE_TAG + ".jar");
         LoadedJar.saveJar(loc);
-        return loc;
+
     }
 }

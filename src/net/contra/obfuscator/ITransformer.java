@@ -10,5 +10,5 @@ public interface ITransformer {
 
     void transform();
 
-    String save();
+    void save();
 }

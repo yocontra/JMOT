@@ -5,7 +5,7 @@ public class Settings {
     public static final double VERSION = 0.15; //Don't Touch
     public static final boolean DEBUG = true;
     public static final ObfuscationType OBFUSCATION_LEVEL = ObfuscationType.Insane;
-    public static String FILE_TAG = "-new";
+    public static final String FILE_TAG = "-new";
 
     //Integer Boxer Settings
     public static final String BOXER_NAME = "box";

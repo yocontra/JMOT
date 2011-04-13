@@ -5,27 +5,24 @@ import net.contra.obfuscator.trans.ob.*;
 import net.contra.obfuscator.util.misc.LogHandler;
 
 public class Application {
-    private static final LogHandler Logger = new LogHandler("Application");
+    private static final LogHandler logger = new LogHandler("Application");
 
     public static void main(String[] args) {
-        Logger.log(String.format("JMOT v%s by Contra", Settings.VERSION));
-        Logger.log("Visit RECoders.org for Info");
-        Logger.log("Please read LICENSE.txt for licensing information.");
+        logger.log(String.format("JMOT v%s by Contra", Settings.VERSION));
+        logger.log("Visit RECoders.org for Info");
+        logger.log("Please read LICENSE.txt for licensing information.");
         if (args.length < 2) {
-            Logger.error("Please provide at least two arguments!");
+            logger.error("Please provide at least two arguments!");
             return;
         }
-        Logger.log("Running with Obfuscation Level: " + Settings.OBFUSCATION_LEVEL.getName());
-        SetParameters();
-        Logger.log("Beginning Process");
+        logger.log("Running with Obfuscation Level: " + Settings.OBFUSCATION_LEVEL.getName());
+        setParameters();
+        logger.log("Beginning Process");
         try {
             String cmd = args[1];
-            ITransformer obber;
+            ITransformer obber = null;
             //Obfuscation Stuff
-            if (cmd.equalsIgnoreCase("all")) {
-                //TODO: UNGHETTO THIS, THIS IS AWFUL
-                return;
-            } else if (cmd.equalsIgnoreCase("string")) {
+            if (cmd.equalsIgnoreCase("string")) {
                 obber = new StringObfuscator(args[0]);
             } else if (cmd.equalsIgnoreCase("attribute")) {
                 obber = new AttributeObfuscator(args[0]);
@@ -43,9 +40,10 @@ public class Application {
             } else if (cmd.equalsIgnoreCase("allatori")) {
                 obber = new AllatoriDeobfuscator(args[0]);
             } else {
-                Logger.error("Please provide a proper transformer identifier!");
-                return;
+                logger.error("Please provide a proper transformer identifier!");
+                Application.close();
             }
+            assert obber != null;
             obber.logger.log("Loading JarFile. Target: " + args[0]);
             obber.load();
             obber.logger.log("Transforming Classes");
@@ -53,14 +51,14 @@ public class Application {
             obber.logger.log("Saving JarFile");
             obber.save();
         } catch (Exception e) {
-            Logger.error("Error Completing Obfuscation!");
+            logger.error("Error Completing Obfuscation!");
             e.printStackTrace();
             return;
         }
-        Logger.log("Process Completed!");
+        logger.log("Process Completed!");
     }
 
-    public static void SetParameters() {
+    public static void setParameters() {
         switch (Settings.OBFUSCATION_LEVEL) {
             case Light:
                 Settings.CIPHER_KEYS = new int[]{127};
@@ -85,7 +83,7 @@ public class Application {
         }
     }
 
-    public static void Close(){
+    public static void close(){
         System.out.println("Application is closing...");
         System.exit(1337);
     }

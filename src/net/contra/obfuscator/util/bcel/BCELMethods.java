@@ -6,11 +6,7 @@ public class BCELMethods {
 
 
     public static boolean isFieldInvoke(Instruction ins) {
-        if (ins instanceof GETSTATIC) {
-            return true;
-        } else if (ins instanceof PUTSTATIC) {
-            return true;
-        } else return ins instanceof GETFIELD || ins instanceof PUTFIELD;
+        return ins instanceof GETSTATIC || ins instanceof PUTSTATIC || ins instanceof GETFIELD || ins instanceof PUTFIELD;
     }
 
     public static String getFieldInvokeName(Instruction ins, ConstantPoolGen cp) {
@@ -70,14 +66,7 @@ public class BCELMethods {
     }
 
     public static boolean isInteger(Instruction ins) {
-        if (ins instanceof ICONST) {
-            return true;
-        } else if (ins instanceof BIPUSH) {
-            return true;
-        } else if (ins instanceof SIPUSH) {
-            return true;
-        }
-        return false;
+        return ins instanceof ICONST || ins instanceof BIPUSH || ins instanceof SIPUSH;
     }
 
     public static int getIntegerValue(Instruction ins) {
@@ -103,11 +92,7 @@ public class BCELMethods {
     }
 
     public static boolean isInvoke(Instruction ins) {
-        if (ins instanceof INVOKESTATIC) {
-            return true;
-        } else if (ins instanceof INVOKEVIRTUAL) {
-            return true;
-        } else return ins instanceof INVOKEINTERFACE || ins instanceof INVOKESPECIAL;
+        return ins instanceof INVOKEVIRTUAL || ins instanceof INVOKEINTERFACE || ins instanceof INVOKESPECIAL || ins instanceof INVOKESTATIC;
     }
 
     public static String getInvokeMethodName(Instruction ins, ConstantPoolGen cp) {

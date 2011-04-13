@@ -4,7 +4,7 @@ import net.contra.obfuscator.Settings;
 
 public class LogHandler {
 
-    private String Name;
+    private final String Name;
 
     public LogHandler(String className) {
         Name = className;

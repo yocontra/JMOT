@@ -25,7 +25,9 @@ public class JarLoader {
             File file = new File(fileLocation);
             JarFile jarFile = new JarFile(file);
             Enumeration<JarEntry> entries = jarFile.entries();
-            wipeManifest(jarFile.getManifest().getMainAttributes().getValue("Main-Class"));
+            if(jarFile.getManifest() != null){
+                wipeManifest(jarFile.getManifest().getMainAttributes().getValue("Main-Class"));
+            }
             while (entries.hasMoreElements()) {
                 JarEntry entry = entries.nextElement();
                 if (entry == null) continue;
