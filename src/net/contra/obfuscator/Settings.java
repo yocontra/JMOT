@@ -2,7 +2,7 @@ package net.contra.obfuscator;
 
 public class Settings {
     //Application Settings
-    public static final double VERSION = 0.15; //Don't Touch
+    public static final double VERSION = 0.16; //Don't Touch
     public static final boolean DEBUG = true;
     public static final ObfuscationType OBFUSCATION_LEVEL = ObfuscationType.Insane;
     public static final String FILE_TAG = "-new";
