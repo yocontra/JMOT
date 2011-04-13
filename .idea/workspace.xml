@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f39d018b-4f71-41ca-b72b-a966c93b7756" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/contra/obfuscator/Application.java" afterPath="$PROJECT_DIR$/src/net/contra/obfuscator/Application.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/contra/obfuscator/trans/deob/AllatoriDeobfuscator.java" afterPath="$PROJECT_DIR$/src/net/contra/obfuscator/trans/deob/AllatoriDeobfuscator.java" />
     </list>
     <ignored path="ContraObfuscator.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -73,7 +72,7 @@
       <file leaf-file-name="Application.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/Application.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="52" selection-start="1964" selection-end="1964" vertical-scroll-proportion="0.51898736">
+            <state line="43" column="35" selection-start="2066" selection-end="2066" vertical-scroll-proportion="0.5620253">
               <folding />
             </state>
           </provider>
@@ -82,7 +81,7 @@
       <file leaf-file-name="JShrinkDeobfuscator.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/trans/deob/JShrinkDeobfuscator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="56" selection-start="456" selection-end="456" vertical-scroll-proportion="0.0">
+            <state line="19" column="69" selection-start="730" selection-end="730" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -725,15 +724,6 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/trans/deob/JShrinkDeobfuscator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="56" selection-start="456" selection-end="456" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/trans/deob/AllatoriDeobfuscator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="132" column="33" selection-start="5896" selection-end="5896" vertical-scroll-proportion="1.6518325">
@@ -750,9 +740,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/trans/deob/JShrinkDeobfuscator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="69" selection-start="730" selection-end="730" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/Application.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="52" selection-start="1964" selection-end="1964" vertical-scroll-proportion="0.51898736">
+        <state line="43" column="35" selection-start="2066" selection-end="2066" vertical-scroll-proportion="0.5620253">
           <folding />
         </state>
       </provider>

@@ -1,6 +1,7 @@
 package net.contra.obfuscator;
 
 import net.contra.obfuscator.trans.deob.AllatoriDeobfuscator;
+import net.contra.obfuscator.trans.deob.JShrinkDeobfuscator;
 import net.contra.obfuscator.trans.ob.*;
 import net.contra.obfuscator.util.misc.LogHandler;
 
@@ -40,7 +41,7 @@ public class Application {
             } else if (cmd.equalsIgnoreCase("allatori")) {
                 obber = new AllatoriDeobfuscator(args[0]);
             } else if (cmd.equalsIgnoreCase("jshrink")) {
-                obber = new AllatoriDeobfuscator(args[0]);
+                obber = new JShrinkDeobfuscator(args[0]);
             } else {
                 logger.error("Please provide a proper transformer identifier!");
                 Application.close();
