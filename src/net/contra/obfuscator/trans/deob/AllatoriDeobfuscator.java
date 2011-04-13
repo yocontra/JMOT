@@ -137,6 +137,5 @@ public class AllatoriDeobfuscator implements ITransformer {
     public void save() {
         String loc = Location.replace(".jar", Settings.FILE_TAG + ".jar");
         LoadedJar.saveJar(loc);
-
     }
 }

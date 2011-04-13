@@ -25,7 +25,7 @@ public class JarLoader {
             File file = new File(fileLocation);
             JarFile jarFile = new JarFile(file);
             Enumeration<JarEntry> entries = jarFile.entries();
-            if(jarFile.getManifest() != null){
+            if (jarFile.getManifest() != null) {
                 wipeManifest(jarFile.getManifest().getMainAttributes().getValue("Main-Class"));
             }
             while (entries.hasMoreElements()) {
@@ -63,7 +63,7 @@ public class JarLoader {
             FileOutputStream os = new FileOutputStream(fileName);
             JarOutputStream jos = new JarOutputStream(os);
             for (ClassGen classIt : ClassEntries.values()) {
-                jos.putNextEntry(new JarEntry(classIt.getClassName().replace('.', File.separatorChar) + ".class"));
+                jos.putNextEntry(new JarEntry(classIt.getClassName().replace('.', '/') + ".class"));
                 jos.write(classIt.getJavaClass().getBytes());
                 jos.closeEntry();
                 jos.flush();

@@ -5,7 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f39d018b-4f71-41ca-b72b-a966c93b7756" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/contra/obfuscator/Application.java" afterPath="$PROJECT_DIR$/src/net/contra/obfuscator/Application.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/JMOT_jar/JMOT.jar" afterPath="$PROJECT_DIR$/out/artifacts/JMOT_jar/JMOT.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/JMOT/net/contra/obfuscator/Application$1.class" afterPath="$PROJECT_DIR$/out/production/JMOT/net/contra/obfuscator/Application$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/JMOT/net/contra/obfuscator/Application.class" afterPath="$PROJECT_DIR$/out/production/JMOT/net/contra/obfuscator/Application.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/JMOT/net/contra/obfuscator/trans/deob/AllatoriDeobfuscator.class" afterPath="$PROJECT_DIR$/out/production/JMOT/net/contra/obfuscator/trans/deob/AllatoriDeobfuscator.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/JMOT/net/contra/obfuscator/trans/deob/JShrinkDeobfuscator.class" afterPath="$PROJECT_DIR$/out/production/JMOT/net/contra/obfuscator/trans/deob/JShrinkDeobfuscator.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/JMOT/net/contra/obfuscator/trans/deob/StoreHandler.class" afterPath="$PROJECT_DIR$/out/production/JMOT/net/contra/obfuscator/trans/deob/StoreHandler.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/JMOT/net/contra/obfuscator/util/bcel/JarLoader.class" afterPath="$PROJECT_DIR$/out/production/JMOT/net/contra/obfuscator/util/bcel/JarLoader.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/contra/obfuscator/trans/deob/AllatoriDeobfuscator.java" afterPath="$PROJECT_DIR$/src/net/contra/obfuscator/trans/deob/AllatoriDeobfuscator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/contra/obfuscator/trans/deob/JShrinkDeobfuscator.java" afterPath="$PROJECT_DIR$/src/net/contra/obfuscator/trans/deob/JShrinkDeobfuscator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/contra/obfuscator/util/bcel/JarLoader.java" afterPath="$PROJECT_DIR$/src/net/contra/obfuscator/util/bcel/JarLoader.java" />
     </list>
     <ignored path="ContraObfuscator.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -69,10 +79,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Application.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Application.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/Application.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="35" selection-start="2066" selection-end="2066" vertical-scroll-proportion="0.5620253">
+            <state line="45" column="100" selection-start="2190" selection-end="2190" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -81,7 +91,7 @@
       <file leaf-file-name="JShrinkDeobfuscator.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/trans/deob/JShrinkDeobfuscator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="69" selection-start="730" selection-end="730" vertical-scroll-proportion="0.0">
+            <state line="71" column="78" selection-start="3425" selection-end="3425" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -89,11 +99,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JarLoader.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="JarLoader.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/util/bcel/JarLoader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="50" column="70" selection-start="2041" selection-end="2041" vertical-scroll-proportion="0.0">
+            <state line="72" column="41" selection-start="2908" selection-end="2908" vertical-scroll-proportion="0.6329114">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AllatoriDeobfuscator.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/trans/deob/AllatoriDeobfuscator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="137" column="8" selection-start="5947" selection-end="6045" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -124,10 +145,10 @@
         <option value="$PROJECT_DIR$/src/net/contra/obfuscator/util/misc/RenamedPair.java" />
         <option value="$PROJECT_DIR$/src/net/contra/obfuscator/util/bcel/BCELMethods.java" />
         <option value="$PROJECT_DIR$/src/net/contra/obfuscator/ITransformer.java" />
-        <option value="$PROJECT_DIR$/src/net/contra/obfuscator/util/bcel/JarLoader.java" />
+        <option value="$PROJECT_DIR$/src/net/contra/obfuscator/Application.java" />
         <option value="$PROJECT_DIR$/src/net/contra/obfuscator/trans/deob/AllatoriDeobfuscator.java" />
         <option value="$PROJECT_DIR$/src/net/contra/obfuscator/trans/deob/JShrinkDeobfuscator.java" />
-        <option value="$PROJECT_DIR$/src/net/contra/obfuscator/Application.java" />
+        <option value="$PROJECT_DIR$/src/net/contra/obfuscator/util/bcel/JarLoader.java" />
       </list>
     </option>
   </component>
@@ -244,7 +265,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="trans" />
+              <option name="myItemId" value="util" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bcel" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -268,14 +293,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="trans" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="deob" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="JShrinkDeobfuscator.java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -500,7 +517,7 @@
     <configuration default="false" name="Application" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="net.contra.obfuscator.Application" />
       <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="&quot;C:/out/Roaches.jar&quot; allatori" />
+      <option name="PROGRAM_PARAMETERS" value="&quot;C:/out/BeastlyGOP-pack.jar&quot; jshrink" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" value="" />
@@ -724,9 +741,25 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="45" column="100" selection-start="2190" selection-end="2190" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/trans/deob/AllatoriDeobfuscator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="132" column="33" selection-start="5896" selection-end="5896" vertical-scroll-proportion="1.6518325">
+        <state line="137" column="8" selection-start="5947" selection-end="6045" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/trans/deob/JShrinkDeobfuscator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="71" column="78" selection-start="3425" selection-end="3425" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -735,23 +768,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/util/bcel/JarLoader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="70" selection-start="2041" selection-end="2041" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/trans/deob/JShrinkDeobfuscator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="69" selection-start="730" selection-end="730" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="35" selection-start="2066" selection-end="2066" vertical-scroll-proportion="0.5620253">
+        <state line="72" column="41" selection-start="2908" selection-end="2908" vertical-scroll-proportion="0.6329114">
           <folding />
         </state>
       </provider>

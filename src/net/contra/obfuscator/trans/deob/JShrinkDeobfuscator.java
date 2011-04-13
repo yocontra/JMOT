@@ -4,6 +4,7 @@ import com.sun.org.apache.bcel.internal.classfile.Method;
 import com.sun.org.apache.bcel.internal.generic.*;
 import net.contra.obfuscator.Application;
 import net.contra.obfuscator.ITransformer;
+import net.contra.obfuscator.Settings;
 import net.contra.obfuscator.util.bcel.BCELMethods;
 import net.contra.obfuscator.util.bcel.JarLoader;
 import net.contra.obfuscator.util.misc.LogHandler;
@@ -58,7 +59,8 @@ public class JShrinkDeobfuscator implements ITransformer {
                     if (BCELMethods.isInteger(handle.getInstruction())
                             && handle.getNext().getInstruction() instanceof INVOKESTATIC) {
                         assert shrinkClass != null;
-                        if(!BCELMethods.getInvokeClassName(handle.getNext().getInstruction(), cg.getConstantPool()).equals(shrinkClass.getClassName())) continue;
+                        if (!BCELMethods.getInvokeClassName(handle.getNext().getInstruction(), cg.getConstantPool()).equals(shrinkClass.getClassName()))
+                            continue;
                         int storeidx = BCELMethods.getIntegerValue(handle.getInstruction());
                         StoreHandler store = new StoreHandler(LoadedJar);
                         String orig = store.getString(storeidx);
@@ -78,6 +80,8 @@ public class JShrinkDeobfuscator implements ITransformer {
     }
 
     public void save() {
+        String loc = Location.replace(".jar", Settings.FILE_TAG + ".jar");
+        LoadedJar.saveJar(loc);
     }
 }
 
