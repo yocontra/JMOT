@@ -28,15 +28,13 @@ public class JarLoader {
             wipeManifest(jarFile.getManifest().getMainAttributes().getValue("Main-Class"));
             while (entries.hasMoreElements()) {
                 JarEntry entry = entries.nextElement();
-                if (entry == null) {
-                    continue;
-                }
+                if (entry == null) continue;
                 InputStream entryStream = jarFile.getInputStream(entry);
                 if (entry.getName().endsWith(".class")) {
                     JavaClass jc = new ClassParser(entryStream, entry.getName()).parse();
                     ClassEntries.put(jc.getClassName(), new ClassGen(jc));
                 } else {
-                    NonClassEntries.put(entry.getName(), IO.GetBytes(entryStream));
+                    NonClassEntries.put(entry.getName(), IO.getBytes(entryStream));
                 }
             }
         } catch (Exception e) {
@@ -47,7 +45,6 @@ public class JarLoader {
 
     private void wipeManifest(String main) {
         for (String n : NonClassEntries.keySet()) {
-            byte[] bite = NonClassEntries.get(n);
             if (n.startsWith("META-INF/")) {
                 if (n.endsWith("MANIFEST.MF")) {
                     String nm = "Main-Class: " + main;

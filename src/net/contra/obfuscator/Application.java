@@ -8,16 +8,16 @@ public class Application {
     private static final LogHandler Logger = new LogHandler("Application");
 
     public static void main(String[] args) {
-        Logger.Log(String.format("JMOT v%s by Contra", Settings.VERSION));
-        Logger.Log("Visit RECoders.org for Info");
-        Logger.Log("Please read LICENSE.txt for licensing information.");
+        Logger.log(String.format("JMOT v%s by Contra", Settings.VERSION));
+        Logger.log("Visit RECoders.org for Info");
+        Logger.log("Please read LICENSE.txt for licensing information.");
         if (args.length < 2) {
-            Logger.Error("Please provide at least two arguments!");
+            Logger.error("Please provide at least two arguments!");
             return;
         }
-        Logger.Log("Running with Obfuscation Level: " + Settings.OBFUSCATION_LEVEL.getName());
+        Logger.log("Running with Obfuscation Level: " + Settings.OBFUSCATION_LEVEL.getName());
         SetParameters();
-        Logger.Log("Beginning Process");
+        Logger.log("Beginning Process");
         try {
             String cmd = args[1];
             ITransformer obber;
@@ -43,21 +43,21 @@ public class Application {
             } else if (cmd.equalsIgnoreCase("allatori")) {
                 obber = new AllatoriDeobfuscator(args[0]);
             } else {
-                Logger.Error("Please provide a proper transformer identifier!");
+                Logger.error("Please provide a proper transformer identifier!");
                 return;
             }
-            obber.logger.Log("Loading JarFile. Target: " + args[0]);
+            obber.logger.log("Loading JarFile. Target: " + args[0]);
             obber.load();
-            obber.logger.Log("Transforming Classes");
+            obber.logger.log("Transforming Classes");
             obber.transform();
-            obber.logger.Log("Saving JarFile");
+            obber.logger.log("Saving JarFile");
             obber.save();
         } catch (Exception e) {
-            Logger.Error("Error Completing Obfuscation!");
+            Logger.error("Error Completing Obfuscation!");
             e.printStackTrace();
             return;
         }
-        Logger.Log("Process Completed!");
+        Logger.log("Process Completed!");
     }
 
     public static void SetParameters() {

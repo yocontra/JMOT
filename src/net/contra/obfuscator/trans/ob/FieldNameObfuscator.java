@@ -44,7 +44,7 @@ public class FieldNameObfuscator implements ITransformer {
                 cg.replaceField(field, fg.getField());
                 RenamedPair newPair = new RenamedPair(field.getName(), field.getSignature(), fg.getName());
                 NewFields.add(newPair);
-                Logger.Log("Obfuscating Field Names -> Class: " + cg.getClassName() + " Field: " + field.getName());
+                Logger.log("Obfuscating Field Names -> Class: " + cg.getClassName() + " Field: " + field.getName());
             }
             ChangedFields.put(cg.getClassName(), NewFields);
         }
@@ -54,7 +54,7 @@ public class FieldNameObfuscator implements ITransformer {
                 MethodGen mg = new MethodGen(method, cg.getClassName(), cg.getConstantPool());
                 InstructionList list = mg.getInstructionList();
                 if (list == null) continue;
-                Logger.Log("Fixing Field Calls -> Class: " + cg.getClassName() + " Method: " + method.getName());
+                Logger.log("Fixing Field Calls -> Class: " + cg.getClassName() + " Method: " + method.getName());
                 InstructionHandle[] handles = list.getInstructionHandles();
                 for (InstructionHandle handle : handles) {
                     if (BCELMethods.isFieldInvoke(handle.getInstruction())) {

@@ -39,7 +39,7 @@ public class AttributeObfuscator implements ITransformer {
                     mg.setArgumentName(i, Misc.getRandomName());
                 }
                 cg.replaceMethod(method, mg.getMethod());
-                Logger.Log("Removed Attributes/Line Numbers -> Class: " + cg.getClassName() + " Method: " + method.getName());
+                Logger.log("Removed Attributes/Line Numbers -> Class: " + cg.getClassName() + " Method: " + method.getName());
             }
             for (Attribute at : cg.getAttributes()) {
                 cg.removeAttribute(at);

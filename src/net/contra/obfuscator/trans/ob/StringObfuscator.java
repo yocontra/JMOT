@@ -30,7 +30,7 @@ public class StringObfuscator implements ITransformer {
                     MethodGen mg = new MethodGen(method, cg.getClassName(), cg.getConstantPool());
                     InstructionList list = mg.getInstructionList();
                     if (list == null) continue;
-                    Logger.Log("Obfuscating Strings -> Class: " + cg.getClassName() + " Method: " + method.getName());
+                    Logger.log("Obfuscating Strings -> Class: " + cg.getClassName() + " Method: " + method.getName());
                     InstructionHandle[] handles = list.getInstructionHandles();
                     for (InstructionHandle handle : handles) {
                         if (handle.getInstruction() instanceof LDC) {
@@ -40,7 +40,7 @@ public class StringObfuscator implements ITransformer {
                                 handle.setInstruction(new LDC(index));
                                 list.append(handle, new INVOKESTATIC(cg.getConstantPool().addMethodref(cryptor)));
                             } catch (Exception e) {
-                                Logger.Debug("Caught error, skipping instruction.");
+                                Logger.debug("Caught error, skipping instruction.");
                             }
                         }
                     }
@@ -51,10 +51,10 @@ public class StringObfuscator implements ITransformer {
                     cg.replaceMethod(method, mg.getMethod());
                 }
                 if (cg.containsMethod(cryptor.getName(), cryptor.getSignature()) == null) {
-                    Logger.Log("Injecting Cipher Method -> Class: " + cg.getClassName());
+                    Logger.log("Injecting Cipher Method -> Class: " + cg.getClassName());
                     cg.addMethod(cryptor.getMethod());
                 } else {
-                    Logger.Error("Cipher Method Already Exists! -> Class: " + cg.getClassName());
+                    Logger.error("Cipher Method Already Exists! -> Class: " + cg.getClassName());
                 }
             }
         }

@@ -29,7 +29,7 @@ public class IntegerComplicator implements ITransformer {
                 MethodGen mg = new MethodGen(method, cg.getClassName(), cg.getConstantPool());
                 InstructionList list = mg.getInstructionList();
                 if (list == null) continue;
-                Logger.Log("Complicating Constant Integers -> Class: " + cg.getClassName() + " Method: " + method.getName());
+                Logger.log("Complicating Constant Integers -> Class: " + cg.getClassName() + " Method: " + method.getName());
                 InstructionHandle[] handles = list.getInstructionHandles();
                 for (InstructionHandle handle : handles) {
                     if (handle.getPosition() >= handles.length - 1) continue;

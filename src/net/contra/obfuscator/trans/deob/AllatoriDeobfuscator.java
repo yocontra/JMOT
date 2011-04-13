@@ -82,18 +82,18 @@ public class AllatoriDeobfuscator implements ITransformer {
     public void transform() {
         ClassGen hashClass = getAllatoriClassGen(LoadedJar);
         if (hashClass == null) {
-            Logger.Error("Could not locate Allatori cipher class.");
-            Logger.Error("This is not obfuscated with Allatori.");
+            Logger.error("Could not locate Allatori cipher class.");
+            Logger.error("This is not obfuscated with Allatori.");
             Application.Close();
         } else {
-            Logger.Debug("Allatori Class ID: " + hashClass.getClassName());
+            Logger.debug("Allatori Class ID: " + hashClass.getClassName());
         }
         for (ClassGen cg : LoadedJar.ClassEntries.values()) {
             for (Method method : cg.getMethods()) {
                 MethodGen mg = new MethodGen(method, cg.getClassName(), cg.getConstantPool());
                 InstructionList list = mg.getInstructionList();
                 if (list == null) continue;
-                Logger.Debug("Stripping Allatori Calls -> Class: " + cg.getClassName() + " Method: " + method.getName());
+                Logger.debug("Stripping Allatori Calls -> Class: " + cg.getClassName() + " Method: " + method.getName());
                 InstructionHandle[] handles = list.getInstructionHandles();
                 for (InstructionHandle handle : handles) {
                     if (handle.getNext() == null) continue;
@@ -105,10 +105,10 @@ public class AllatoriDeobfuscator implements ITransformer {
                         if (!isLight && !isHeavy) {
                             if (!BCELMethods.getInvokeSignature(invs, cg.getConstantPool()).equals(hashClass.getMethods()[0].getSignature())) {
                                 isLight = true;
-                                Logger.Log("Light string obfuscation detected!");
+                                Logger.log("Light string obfuscation detected!");
                             } else {
                                 isHeavy = true;
-                                Logger.Log("Heavy string obfuscation detected!");
+                                Logger.log("Heavy string obfuscation detected!");
                             }
                         }
                         String original = (String) ((LDC) handle.getInstruction()).getValue(cg.getConstantPool());
@@ -121,7 +121,7 @@ public class AllatoriDeobfuscator implements ITransformer {
                         int idx = cg.getConstantPool().addString(deciphered); //Add our new string
                         handle.getNext().setInstruction(new NOP()); //Get rid of the invoke
                         handle.setInstruction(new LDC(idx)); //Replace old LDC with new LDC
-                        Logger.Debug("\"" + original + "\" -> \"" + deciphered + "\"");
+                        Logger.debug("\"" + original + "\" -> \"" + deciphered + "\"");
                     }
                 }
                 list.setPositions();

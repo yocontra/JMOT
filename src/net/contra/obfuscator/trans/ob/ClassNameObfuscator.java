@@ -36,14 +36,14 @@ public class ClassNameObfuscator implements ITransformer {
             if (manifest != null) {
                 String man = new String(manifest);
                 if (man.contains("Main-Class: " + cg.getClassName())) {
-                    Logger.Debug("Updating Manifest -> Main Class: " + cg.getClassName());
+                    Logger.debug("Updating Manifest -> Main Class: " + cg.getClassName());
                     man = man.replace("Main-Class: " + cg.getClassName(), "Main-Class: " + newName);
                     LoadedJar.NonClassEntries.put("META-INF/MANIFEST.MF", man.getBytes());
                 }
             }
             String oldName = cg.getClassName();
             cg.setClassName(newName);
-            Logger.Log("Obfuscating Method Names -> Class: " + oldName + " - " + cg.getClassName());
+            Logger.log("Obfuscating Method Names -> Class: " + oldName + " - " + cg.getClassName());
             ChangedClasses.put(oldName, cg.getClassName());
         }
         //We fix all of the method/field calls
@@ -52,7 +52,7 @@ public class ClassNameObfuscator implements ITransformer {
                 MethodGen mg = new MethodGen(method, cg.getClassName(), cg.getConstantPool());
                 InstructionList list = mg.getInstructionList();
                 if (list == null) continue;
-                Logger.Log("Fixing Method Calls -> Class: " + cg.getClassName() + " Method: " + method.getName());
+                Logger.log("Fixing Method Calls -> Class: " + cg.getClassName() + " Method: " + method.getName());
                 InstructionHandle[] handles = list.getInstructionHandles();
                 for (InstructionHandle handle : handles) {
                     if (BCELMethods.isInvoke(handle.getInstruction())) {
@@ -60,7 +60,7 @@ public class ClassNameObfuscator implements ITransformer {
                         String methname = BCELMethods.getInvokeMethodName(handle.getInstruction(), cg.getConstantPool());
                         String methsig = BCELMethods.getInvokeSignature(handle.getInstruction(), cg.getConstantPool());
                         if (!ChangedClasses.containsKey(clazz)) continue;
-                        Logger.Debug("Swapping Call -> Class: " + clazz + " Name: " + methname + " Sig: " + methsig);
+                        Logger.debug("Swapping Call -> Class: " + clazz + " Name: " + methname + " Sig: " + methsig);
                         String newname = ChangedClasses.get(clazz);
                         int index = cg.getConstantPool().addMethodref(newname, methname, methsig);
                         handle.setInstruction(BCELMethods.getNewInvoke(handle.getInstruction(), index));
@@ -69,7 +69,7 @@ public class ClassNameObfuscator implements ITransformer {
                         String fieldname = BCELMethods.getFieldInvokeName(handle.getInstruction(), cg.getConstantPool());
                         String fieldsig = BCELMethods.getFieldInvokeSignature(handle.getInstruction(), cg.getConstantPool());
                         if (!ChangedClasses.containsKey(clazz)) continue;
-                        Logger.Debug("Swapping Call -> Class: " + clazz + " Name: " + fieldname + " Sig: " + fieldsig);
+                        Logger.debug("Swapping Call -> Class: " + clazz + " Name: " + fieldname + " Sig: " + fieldsig);
                         String newname = ChangedClasses.get(clazz);
                         int index = cg.getConstantPool().addFieldref(newname, fieldname, fieldsig);
                         handle.setInstruction(BCELMethods.getNewFieldInvoke(handle.getInstruction(), index));

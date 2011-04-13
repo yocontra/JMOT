@@ -46,7 +46,7 @@ public class MethodNameObfuscator implements ITransformer {
                 cg.replaceMethod(method, mg.getMethod());
                 RenamedPair pair = new RenamedPair(method.getName(), method.getSignature(), mg.getName());
                 NewClassMethods.add(pair);
-                Logger.Log("Obfuscating Method Names -> Class: " + cg.getClassName() + " Method: " + method.getName());
+                Logger.log("Obfuscating Method Names -> Class: " + cg.getClassName() + " Method: " + method.getName());
             }
             ChangedMethods.put(cg.getClassName(), NewClassMethods);
         }
@@ -56,7 +56,7 @@ public class MethodNameObfuscator implements ITransformer {
                 MethodGen mg = new MethodGen(method, cg.getClassName(), cg.getConstantPool());
                 InstructionList list = mg.getInstructionList();
                 if (list == null) continue;
-                Logger.Log("Fixing Method Calls -> Class: " + cg.getClassName() + " Method: " + method.getName());
+                Logger.log("Fixing Method Calls -> Class: " + cg.getClassName() + " Method: " + method.getName());
                 InstructionHandle[] handles = list.getInstructionHandles();
                 for (InstructionHandle handle : handles) {
                     if (BCELMethods.isInvoke(handle.getInstruction())) {

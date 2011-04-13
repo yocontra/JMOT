@@ -32,7 +32,7 @@ public class IntegerBoxer implements ITransformer {
                 MethodGen mg = new MethodGen(method, cg.getClassName(), cg.getConstantPool());
                 InstructionList list = mg.getInstructionList();
                 if (list == null) continue;
-                Logger.Log("Boxing Constant Integers -> Class: " + cg.getClassName() + " Method: " + method.getName());
+                Logger.log("Boxing Constant Integers -> Class: " + cg.getClassName() + " Method: " + method.getName());
                 InstructionHandle[] handles = list.getInstructionHandles();
                 for (InstructionHandle handle : handles) {
                     if (handle.getInstruction() instanceof ICONST
@@ -47,7 +47,7 @@ public class IntegerBoxer implements ITransformer {
                         if (curValue != -9001 && (curValue % 2 == 0)
                                 && Settings.OBFUSCATION_LEVEL.getLevel() > ObfuscationType.Normal.getLevel()) { //check if it's even.
                             int tempkey = curValue / 2;
-                            Logger.Debug("Value: " + curValue + " Key: " + tempkey);
+                            Logger.debug("Value: " + curValue + " Key: " + tempkey);
                             Instruction newIns = BCELMethods.getIntegerLoad(handle.getInstruction(), tempkey);
                             handle.setInstruction(newIns);
                             if (tempkey <= 5 && tempkey >= -1) {
@@ -69,10 +69,10 @@ public class IntegerBoxer implements ITransformer {
                 cg.replaceMethod(method, mg.getMethod());
             }
             if (cg.containsMethod(boxer.getName(), boxer.getSignature()) == null) {
-                Logger.Log("Injecting Boxer Method -> Class: " + cg.getClassName());
+                Logger.log("Injecting Boxer Method -> Class: " + cg.getClassName());
                 cg.addMethod(boxer.getMethod());
             } else {
-                Logger.Error("Boxer Method Already Exists! -> Class: " + cg.getClassName());
+                Logger.error("Boxer Method Already Exists! -> Class: " + cg.getClassName());
             }
         }
     }

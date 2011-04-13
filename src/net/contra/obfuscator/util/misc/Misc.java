@@ -4,12 +4,6 @@ import net.contra.obfuscator.Settings;
 
 import java.util.Random;
 
-/**
- * Created by IntelliJ IDEA.
- * User: Contra
- * Date: 2/7/11
- * Time: 8:36 AM
- */
 public class Misc {
     public static String getRandomName() {
         switch (Settings.OBFUSCATION_LEVEL) {

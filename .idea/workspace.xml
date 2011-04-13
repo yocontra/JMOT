@@ -5,7 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f39d018b-4f71-41ca-b72b-a966c93b7756" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="C:\Users\Eric\Desktop\Projects\CodeCamp\JMOT\out\production\JMOT\net\contra\obfuscator\util\bcel\JarLoader.class" afterPath="C:\Users\Eric\Desktop\Projects\CodeCamp\JMOT\out\production\JMOT\net\contra\obfuscator\util\bcel\JarLoader.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/contra/obfuscator/Application.java" afterPath="$PROJECT_DIR$/src/net/contra/obfuscator/Application.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/contra/obfuscator/trans/deob/AllatoriDeobfuscator.java" afterPath="$PROJECT_DIR$/src/net/contra/obfuscator/trans/deob/AllatoriDeobfuscator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/contra/obfuscator/trans/ob/AttributeObfuscator.java" afterPath="$PROJECT_DIR$/src/net/contra/obfuscator/trans/ob/AttributeObfuscator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/contra/obfuscator/trans/ob/ClassNameObfuscator.java" afterPath="$PROJECT_DIR$/src/net/contra/obfuscator/trans/ob/ClassNameObfuscator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/contra/obfuscator/trans/ob/FieldNameObfuscator.java" afterPath="$PROJECT_DIR$/src/net/contra/obfuscator/trans/ob/FieldNameObfuscator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/contra/obfuscator/trans/ob/IntegerBoxer.java" afterPath="$PROJECT_DIR$/src/net/contra/obfuscator/trans/ob/IntegerBoxer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/contra/obfuscator/trans/ob/IntegerComplicator.java" afterPath="$PROJECT_DIR$/src/net/contra/obfuscator/trans/ob/IntegerComplicator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/contra/obfuscator/trans/ob/MethodNameObfuscator.java" afterPath="$PROJECT_DIR$/src/net/contra/obfuscator/trans/ob/MethodNameObfuscator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/contra/obfuscator/trans/ob/StringObfuscator.java" afterPath="$PROJECT_DIR$/src/net/contra/obfuscator/trans/ob/StringObfuscator.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/contra/obfuscator/util/bcel/JarLoader.java" afterPath="$PROJECT_DIR$/src/net/contra/obfuscator/util/bcel/JarLoader.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/contra/obfuscator/util/misc/IO.java" afterPath="$PROJECT_DIR$/src/net/contra/obfuscator/util/misc/IO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/contra/obfuscator/util/misc/LogHandler.java" afterPath="$PROJECT_DIR$/src/net/contra/obfuscator/util/misc/LogHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/contra/obfuscator/util/misc/Misc.java" afterPath="$PROJECT_DIR$/src/net/contra/obfuscator/util/misc/Misc.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/contra/obfuscator/util/misc/RenamedPair.java" afterPath="$PROJECT_DIR$/src/net/contra/obfuscator/util/misc/RenamedPair.java" />
     </list>
     <ignored path="ContraObfuscator.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -69,19 +84,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="BCELMethods.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/util/bcel/BCELMethods.java">
+      <file leaf-file-name="RenamedPair.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/util/misc/RenamedPair.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="78" column="9" selection-start="2793" selection-end="2793" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JarLoader.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/util/bcel/JarLoader.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="78" selection-start="1178" selection-end="1178" vertical-scroll-proportion="0.5113924">
+            <state line="12" column="5" selection-start="337" selection-end="337" vertical-scroll-proportion="0.5164557">
               <folding />
             </state>
           </provider>
@@ -101,22 +107,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/net/contra/obfuscator/trans/AttributeObfuscator.java" />
-        <option value="$PROJECT_DIR$/src/net/contra/obfuscator/ITransformer.java" />
         <option value="$PROJECT_DIR$/src/net/contra/obfuscator/trans/ClassNameObfuscator.java" />
         <option value="$PROJECT_DIR$/src/net/contra/obfuscator/Settings.java" />
         <option value="$PROJECT_DIR$/src/net/contra/obfuscator/trans/ob/FieldNameObfuscator.java" />
-        <option value="$PROJECT_DIR$/src/net/contra/obfuscator/util/misc/LogHandler.java" />
         <option value="$PROJECT_DIR$/src/net/contra/obfuscator/trans/ob/MethodNameObfuscator.java" />
         <option value="$PROJECT_DIR$/src/net/contra/obfuscator/trans/ob/StringObfuscator.java" />
         <option value="$PROJECT_DIR$/src/net/contra/obfuscator/trans/deob/AllatoriDeobfuscator.java" />
-        <option value="$PROJECT_DIR$/src/net/contra/obfuscator/util/misc/Misc.java" />
         <option value="$PROJECT_DIR$/src/net/contra/obfuscator/trans/ob/IntegerComplicator.java" />
         <option value="$PROJECT_DIR$/src/net/contra/obfuscator/trans/ob/ClassNameObfuscator.java" />
         <option value="$PROJECT_DIR$/src/net/contra/obfuscator/trans/ob/AttributeObfuscator.java" />
         <option value="$PROJECT_DIR$/src/net/contra/obfuscator/Application.java" />
         <option value="$PROJECT_DIR$/src/net/contra/obfuscator/trans/ob/IntegerBoxer.java" />
+        <option value="$PROJECT_DIR$/src/net/contra/obfuscator/util/misc/IO.java" />
         <option value="$PROJECT_DIR$/src/net/contra/obfuscator/util/bcel/JarLoader.java" />
+        <option value="$PROJECT_DIR$/src/net/contra/obfuscator/util/misc/LogHandler.java" />
+        <option value="$PROJECT_DIR$/src/net/contra/obfuscator/util/misc/Misc.java" />
+        <option value="$PROJECT_DIR$/src/net/contra/obfuscator/util/misc/RenamedPair.java" />
       </list>
     </option>
   </component>
@@ -605,16 +611,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/util/misc/IO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="7" selection-start="144" selection-end="144" vertical-scroll-proportion="0.1607565" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/ITransformer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="39" selection-start="156" selection-end="156" vertical-scroll-proportion="0.2939481" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/Settings.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="18" column="39" selection-start="674" selection-end="674" vertical-scroll-proportion="0.0">
@@ -625,13 +621,6 @@
     <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/trans/ob/FieldNameObfuscator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="83" column="63" selection-start="4091" selection-end="4091" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/util/misc/LogHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="26" selection-start="376" selection-end="376" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -658,13 +647,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/util/misc/Misc.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="25" selection-start="760" selection-end="777" vertical-scroll-proportion="0.0">
-          <folding />
         </state>
       </provider>
     </entry>
@@ -705,12 +687,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/util/bcel/BCELMethods.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="78" column="9" selection-start="2793" selection-end="2793" vertical-scroll-proportion="0.0" />
+        <state line="78" column="9" selection-start="2793" selection-end="2793" vertical-scroll-proportion="0.043037973">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/util/bcel/JarLoader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="78" selection-start="1178" selection-end="1178" vertical-scroll-proportion="0.5113924">
+        <state line="36" column="61" selection-start="1569" selection-end="1569" vertical-scroll-proportion="0.33333334">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/util/misc/IO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="26" selection-start="181" selection-end="181" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/util/misc/LogHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="4" selection-start="108" selection-end="108" vertical-scroll-proportion="0.21518987">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/util/misc/Misc.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="26" selection-start="127" selection-end="127" vertical-scroll-proportion="-1.3139241">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/contra/obfuscator/util/misc/RenamedPair.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="5" selection-start="337" selection-end="337" vertical-scroll-proportion="0.5164557">
           <folding />
         </state>
       </provider>

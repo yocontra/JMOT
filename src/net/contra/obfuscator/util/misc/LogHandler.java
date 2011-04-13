@@ -3,23 +3,24 @@ package net.contra.obfuscator.util.misc;
 import net.contra.obfuscator.Settings;
 
 public class LogHandler {
-    private String Name = "Adopted";
+
+    private String Name;
 
     public LogHandler(String className) {
         Name = className;
     }
 
-    public void Log(String msg) {
+    public void log(String msg) {
         System.out.println("[" + Name + "]" + msg);
     }
 
-    public void Debug(String msg) {
+    public void debug(String msg) {
         if (Settings.DEBUG) {
             System.out.println("[" + Name + "]" + "[DEBUG]" + msg);
         }
     }
 
-    public void Error(String msg) {
+    public void error(String msg) {
         System.out.println("[" + Name + "]" + "[ERROR]" + msg);
     }
 }
