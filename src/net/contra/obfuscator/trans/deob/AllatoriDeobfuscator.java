@@ -86,7 +86,7 @@ public class AllatoriDeobfuscator implements ITransformer {
             Logger.error("This is not obfuscated with Allatori.");
             Application.close();
         } else {
-            Logger.debug("Allatori Class ID: " + hashClass.getClassName());
+            Logger.debug("Allatori Class: " + hashClass.getClassName());
         }
         for (ClassGen cg : LoadedJar.ClassEntries.values()) {
             for (Method method : cg.getMethods()) {

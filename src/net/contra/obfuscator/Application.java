@@ -39,6 +39,8 @@ public class Application {
             //Deobfuscation stuff
             } else if (cmd.equalsIgnoreCase("allatori")) {
                 obber = new AllatoriDeobfuscator(args[0]);
+            } else if (cmd.equalsIgnoreCase("jshrink")) {
+                obber = new AllatoriDeobfuscator(args[0]);
             } else {
                 logger.error("Please provide a proper transformer identifier!");
                 Application.close();
