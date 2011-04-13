@@ -100,6 +100,7 @@ public class AllatoriDeobfuscator implements ITransformer {
                     if (handle.getInstruction() instanceof LDC &&
                             handle.getNext().getInstruction() instanceof INVOKESTATIC) {
                         INVOKESTATIC invs = (INVOKESTATIC) handle.getNext().getInstruction();
+                        assert hashClass != null;
                         if (!BCELMethods.getInvokeClassName(invs, cg.getConstantPool()).equals(hashClass.getClassName()))
                             continue;
                         if (!isLight && !isHeavy) {
